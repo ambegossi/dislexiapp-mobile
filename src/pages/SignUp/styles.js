@@ -12,11 +12,12 @@ export const Container = styled(LinearGradient)`
 `;
 
 export const Image = styled.Image`
+  margin-bottom: 50px;
   width: 160px;
 `;
 
 export const Button = styled(ButtonComponent)`
-  margin-top: 60px;
+  margin-top: 15px;
   margin-bottom: 40px;
 `;
 
