@@ -80,6 +80,7 @@ const SignUp = () => {
 
             <Input
               autoCorrect={false}
+              autoCapitalize="words"
               name="name"
               icon="user"
               placeholder="Nome"
@@ -104,6 +105,7 @@ const SignUp = () => {
               onSubmitEditing={() => {
                 passwordConfirmationInputRef.current?.focus();
               }}
+              textContentType="newPassword"
             />
 
             <Input
@@ -116,6 +118,7 @@ const SignUp = () => {
               secureTextEntry
               returnKeyType="send"
               onSubmitEditing={handleSubmit(onSubmit)}
+              textContentType="newPassword"
             />
 
             <Button onPress={handleSubmit(onSubmit)}>Cadastrar</Button>
