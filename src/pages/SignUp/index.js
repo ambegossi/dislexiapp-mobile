@@ -86,6 +86,10 @@ const SignUp = () => {
               control={control}
               errors={errors}
               ref={nameInputRef}
+              returnKeyType="next"
+              onSubmitEditing={() => {
+                passwordInputRef.current?.focus();
+              }}
             />
 
             <Input
@@ -96,6 +100,10 @@ const SignUp = () => {
               errors={errors}
               ref={passwordInputRef}
               secureTextEntry
+              returnKeyType="next"
+              onSubmitEditing={() => {
+                passwordConfirmationInputRef.current?.focus();
+              }}
             />
 
             <Input
@@ -106,6 +114,8 @@ const SignUp = () => {
               errors={errors}
               ref={passwordConfirmationInputRef}
               secureTextEntry
+              returnKeyType="send"
+              onSubmitEditing={handleSubmit(onSubmit)}
             />
 
             <Button onPress={handleSubmit(onSubmit)}>Cadastrar</Button>
