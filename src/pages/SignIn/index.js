@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   ScrollView,
   KeyboardAvoidingView,
@@ -7,6 +7,9 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import { useNavigation } from '@react-navigation/native';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 
 import Input from '../../components/Input';
 
@@ -14,10 +17,24 @@ import logoImg from '../../assets/images/logo.png';
 
 import { Container, Button, Image, BackButton, BackButtonText } from './styles';
 
+const schema = yup.object().shape({
+  name: yup.string().required('O nome é obrigatório'),
+  password: yup.string().required('A senha é obrigatória'),
+});
+
 const SignIn = () => {
   const navigation = useNavigation();
 
+  const { control, handleSubmit, errors } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+  const nameInputRef = useRef();
+  const passwordInputRef = useRef();
+
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+
+  const onSubmit = data => console.log(data);
 
   useEffect(() => {
     const keyboardDidShowListener = Keyboard.addListener(
@@ -53,11 +70,35 @@ const SignIn = () => {
           <Container colors={['rgba(33,39,101,1)', 'rgba(49,55,118,1)']}>
             <Image source={logoImg} />
 
-            <Input name="name" icon="user" placeholder="Nome" />
+            <Input
+              autoCorrect={false}
+              autoCapitalize="words"
+              name="name"
+              icon="user"
+              placeholder="Nome"
+              control={control}
+              errors={errors}
+              ref={nameInputRef}
+              returnKeyType="next"
+              onSubmitEditing={() => {
+                passwordInputRef.current?.focus();
+              }}
+            />
 
-            <Input name="password" icon="lock" placeholder="Senha" />
+            <Input
+              name="password"
+              icon="lock"
+              placeholder="Senha"
+              control={control}
+              errors={errors}
+              ref={passwordInputRef}
+              secureTextEntry
+              returnKeyType="send"
+              onSubmitEditing={handleSubmit(onSubmit)}
+              textContentType="newPassword"
+            />
 
-            <Button onPress={() => { }}>Entrar</Button>
+            <Button onPress={handleSubmit(onSubmit)}>Entrar</Button>
           </Container>
         </ScrollView>
       </KeyboardAvoidingView>
