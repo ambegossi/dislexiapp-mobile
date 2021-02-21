@@ -4,6 +4,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   Keyboard,
+  Alert,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import { useNavigation } from '@react-navigation/native';
@@ -14,6 +15,7 @@ import * as yup from 'yup';
 import Input from '../../components/Input';
 
 import logoImg from '../../assets/images/logo.png';
+import api from '../../services/api';
 
 import { Container, Button, Image, BackButton, BackButtonText } from './styles';
 
@@ -42,7 +44,21 @@ const SignUp = () => {
 
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
 
-  const onSubmit = data => console.log(data);
+  const onSubmit = async data => {
+    try {
+      await api.post('/users', data);
+
+      Alert.alert('Cadastro realizado com sucesso!', 'Você já pode entrar.');
+
+      navigation.navigate('SignIn');
+    } catch (err) {
+      Alert.alert(
+        'Erro no cadastro',
+        err.response?.data?.message ||
+          'Ocorreu um erro ao fazer o cadastro, tente novamente.',
+      );
+    }
+  };
 
   useEffect(() => {
     const keyboardDidShowListener = Keyboard.addListener(
