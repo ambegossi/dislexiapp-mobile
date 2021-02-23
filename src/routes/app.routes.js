@@ -1,14 +1,34 @@
 import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Icon from 'react-native-vector-icons/Feather';
 
-import Dashboard from '../pages/Dashboard';
+import Dashboard from './dashboard.routes';
 
-const App = createStackNavigator();
+const App = createBottomTabNavigator();
 
 const AppRoutes = () => (
   <App.Navigator
-    screenOptions={{
-      cardStyle: { backgroundColor: '#212765' },
+    screenOptions={({ route }) => ({
+      tabBarIcon: ({ color }) => {
+        let iconName;
+
+        if (route.name === 'Dashboard') {
+          iconName = 'home';
+        }
+
+        return <Icon name={iconName} size={32} color={color} />;
+      },
+    })}
+    tabBarOptions={{
+      activeTintColor: '#40488b',
+      inactiveTintColor: '#161a48',
+      showLabel: false,
+      style: {
+        borderTopLeftRadius: 25,
+        borderTopRightRadius: 25,
+        position: 'absolute',
+        height: 70,
+      },
     }}
   >
     <App.Screen name="Dashboard" component={Dashboard} />
