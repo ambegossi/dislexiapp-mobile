@@ -1,5 +1,6 @@
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 import { RectButton } from 'react-native-gesture-handler';
+import { darken } from 'polished';
 
 export const Container = styled(RectButton)`
   width: 100%;
@@ -9,6 +10,12 @@ export const Container = styled(RectButton)`
 
   justify-content: center;
   align-items: center;
+
+  ${props =>
+    props.loading &&
+    css`
+      background: ${darken(0.1, '#be1fd3')};
+    `}
 `;
 
 export const ButtonText = styled.Text`
