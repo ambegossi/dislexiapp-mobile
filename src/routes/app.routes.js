@@ -22,12 +22,13 @@ const AppRoutes = () => (
     tabBarOptions={{
       activeTintColor: '#40488b',
       inactiveTintColor: '#161a48',
+      keyboardHidesTabBar: true,
       showLabel: false,
       style: {
         borderTopLeftRadius: 25,
         borderTopRightRadius: 25,
         position: 'absolute',
-        height: 70,
+        height: 65,
       },
     }}
   >
