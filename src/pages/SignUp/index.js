@@ -25,7 +25,7 @@ const schema = yup.object().shape({
     .string()
     .required('A senha é obrigatória')
     .min(6, 'A senha deve ter no mínimo 6 dígitos'),
-  passwordConfirmation: yup
+  password_confirmation: yup
     .string()
     .required('A confirmação é obrigatória')
     .oneOf([yup.ref('password'), null], 'As senhas devem corresponder'),
@@ -125,7 +125,7 @@ const SignUp = () => {
             />
 
             <Input
-              name="passwordConfirmation"
+              name="password_confirmation"
               icon="lock"
               placeholder="Confirme a senha"
               control={control}
