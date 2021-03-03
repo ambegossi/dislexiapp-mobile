@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { ImageBackground, Button } from 'react-native';
+import { ImageBackground, Button, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { useAuth } from '../../hooks/auth';
@@ -7,9 +7,9 @@ import { useAuth } from '../../hooks/auth';
 import dashboardBgImg from '../../assets/images/dashboardBg.png';
 import writingImg from '../../assets/images/writing.png';
 import astronautImg from '../../assets/images/astronaut.png';
+import capitalizeFirstLetter from '../../utils/capitalizeFirstLetter';
 
 import {
-  Container,
   Header,
   UserName,
   ProfileButton,
@@ -31,18 +31,20 @@ const Dashboard = () => {
   }, [navigate]);
 
   return (
-    <Container>
-      <ImageBackground
-        source={dashboardBgImg}
-        style={{
-          flex: 1,
-          resizeMode: 'cover',
-          paddingLeft: 30,
-          paddingRight: 30,
-        }}
+    <ImageBackground
+      source={dashboardBgImg}
+      style={{
+        flex: 1,
+        paddingLeft: 30,
+        paddingRight: 30,
+      }}
+    >
+      <ScrollView
+        keyboardShouldPersistTaps="handled"
+        contentContainerStyle={{ flex: 1 }}
       >
         <Header>
-          <UserName>{user.name}</UserName>
+          <UserName>{capitalizeFirstLetter(user.name)}</UserName>
 
           <ProfileButton onPress={navigateToProfile}>
             <UserAvatar
@@ -80,9 +82,9 @@ const Dashboard = () => {
           </NamingBottomContainer>
         </NamingButton>
 
-        <Button title="Sair" onPress={signOut} />
-      </ImageBackground>
-    </Container>
+        <Button onPress={signOut} title="sair" />
+      </ScrollView>
+    </ImageBackground>
   );
 };
 

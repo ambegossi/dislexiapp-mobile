@@ -2,12 +2,8 @@ import styled from 'styled-components/native';
 import LinearGradient from 'react-native-linear-gradient';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 
-export const Container = styled.View`
-  flex: 1;
-`;
-
 export const Header = styled.View`
-  padding: ${getStatusBarHeight()}px 0 20px 0;
+  padding: ${getStatusBarHeight()}px 0 30px 0;
 
   flex-direction: row;
   justify-content: flex-end;
@@ -33,7 +29,7 @@ export const UserAvatar = styled.Image`
 `;
 
 export const NamingButton = styled.TouchableOpacity`
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 `;
 
 export const NamingImageWrapper = styled(LinearGradient)`
