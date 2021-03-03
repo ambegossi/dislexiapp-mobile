@@ -24,6 +24,8 @@ const AuthProvider = ({ children }) => {
       ]);
 
       if (token[1] && user[1]) {
+        api.defaults.headers.authorization = `Bearer ${token[1]}`;
+
         setData({ token: token[1], user: JSON.parse(user[1]) });
       }
 
@@ -46,6 +48,8 @@ const AuthProvider = ({ children }) => {
       ['@DislexiApp:user', JSON.stringify(user)],
     ]);
 
+    api.defaults.headers.authorization = `Bearer ${token}`;
+
     setData({ token, user });
   }, []);
 
@@ -55,8 +59,22 @@ const AuthProvider = ({ children }) => {
     setData({});
   }, []);
 
+  const updateUser = useCallback(
+    async user => {
+      await AsyncStorage.setItem('@DislexiApp:user', JSON.stringify(user));
+
+      setData({
+        token: data.token,
+        user,
+      });
+    },
+    [data.token],
+  );
+
   return (
-    <AuthContext.Provider value={{ user: data.user, signIn, signOut, loading }}>
+    <AuthContext.Provider
+      value={{ user: data.user, signIn, signOut, updateUser, loading }}
+    >
       {children}
     </AuthContext.Provider>
   );
