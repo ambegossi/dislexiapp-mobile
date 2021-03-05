@@ -43,8 +43,11 @@ const SignUp = () => {
   const passwordConfirmationInputRef = useRef();
 
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const onSubmit = async data => {
+    setLoading(true);
+
     try {
       await api.post('/users', data);
 
@@ -58,6 +61,8 @@ const SignUp = () => {
           'Ocorreu um erro ao fazer o cadastro, tente novamente.',
       );
     }
+
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -137,7 +142,9 @@ const SignUp = () => {
               textContentType="newPassword"
             />
 
-            <Button onPress={handleSubmit(onSubmit)}>Cadastrar</Button>
+            <Button loading={loading} onPress={handleSubmit(onSubmit)}>
+              Cadastrar
+            </Button>
           </Container>
         </ScrollView>
       </KeyboardAvoidingView>

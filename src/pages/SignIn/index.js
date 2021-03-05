@@ -36,16 +36,21 @@ const SignIn = () => {
   const passwordInputRef = useRef();
 
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const onSubmit = async data => {
+    setLoading(true);
+
     try {
       await signIn({ name: data.name, password: data.password });
     } catch (err) {
       Alert.alert(
         'Erro no cadastro',
         err.response?.data?.message ||
-        'Ocorreu um erro ao entrar, tente novamente.',
+          'Ocorreu um erro ao entrar, tente novamente.',
       );
+
+      setLoading(false);
     }
   };
 
@@ -111,7 +116,9 @@ const SignIn = () => {
               textContentType="newPassword"
             />
 
-            <Button onPress={handleSubmit(onSubmit)}>Entrar</Button>
+            <Button loading={loading} onPress={handleSubmit(onSubmit)}>
+              Entrar
+            </Button>
           </Container>
         </ScrollView>
       </KeyboardAvoidingView>
