@@ -1,7 +1,8 @@
 import axios from 'axios';
+import Config from 'react-native-config';
 
 const api = axios.create({
-  baseURL: 'https://2356250ea2df.ngrok.io',
+  baseURL: Config.API_URL,
 });
 
 export default api;
