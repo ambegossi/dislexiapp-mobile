@@ -23,7 +23,7 @@ const Welcome = () => {
     <>
       <Container colors={['rgba(33,39,101,1)', 'rgba(49,55,118,1)']}>
         <TextToSpeechButtonContainer>
-          <TextToSpeechButton text="Bem-vindo! Clique no botão rosa para criar uma conta, ou no botão no fim da tela para entrar." />
+          <TextToSpeechButton text="Bem-vindo! Toque no botão rosa para criar uma conta, ou no botão no fim da tela para entrar." />
         </TextToSpeechButtonContainer>
 
         <LottieView source={astronaut} autoPlay loop style={{ width: 250 }} />
