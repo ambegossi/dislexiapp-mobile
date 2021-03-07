@@ -18,8 +18,8 @@ const TextToSpeechButton = ({ text }) => {
     );
   };
 
-  const playAudio = audio => {
-    const speech = new Sound(audio, '', error => {
+  const playAudio = audioPath => {
+    const speech = new Sound(audioPath, '', error => {
       if (error) {
         handleErrorAlert();
 
