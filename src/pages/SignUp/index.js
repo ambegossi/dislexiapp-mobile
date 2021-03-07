@@ -13,11 +13,19 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 import Input from '../../components/Input';
+import TextToSpeechButton from '../../components/TextToSpeechButton';
 
 import logoImg from '../../assets/images/logo.png';
 import api from '../../services/api';
 
-import { Container, Button, Image, BackButton, BackButtonText } from './styles';
+import {
+  Container,
+  TextToSpeechButtonContainer,
+  Button,
+  Image,
+  BackButton,
+  BackButtonText,
+} from './styles';
 
 const schema = yup.object().shape({
   name: yup.string().required('O nome é obrigatório'),
@@ -97,6 +105,10 @@ const SignUp = () => {
           contentContainerStyle={{ flex: 1 }}
         >
           <Container colors={['rgba(33,39,101,1)', 'rgba(49,55,118,1)']}>
+            <TextToSpeechButtonContainer>
+              <TextToSpeechButton text="Digite um nome e uma senha nos campos abaixo. Você usará eles para acessar sua conta. Após isso, toque no botão rosa para cadastrar, ou no botão no fim da tela para voltar." />
+            </TextToSpeechButtonContainer>
+
             <Image source={logoImg} />
 
             <Input
