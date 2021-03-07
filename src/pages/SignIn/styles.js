@@ -11,6 +11,12 @@ export const Container = styled(LinearGradient)`
   padding: 0 30px;
 `;
 
+export const TextToSpeechButtonContainer = styled.View`
+  height: 28px;
+  width: 100%;
+  align-items: flex-start;
+`;
+
 export const Image = styled.Image`
   margin-bottom: 50px;
   width: 160px;
