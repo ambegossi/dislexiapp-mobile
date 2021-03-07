@@ -13,6 +13,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 import Input from '../../components/Input';
+import TextToSpeechButton from '../../components/TextToSpeechButton';
 
 import bgImg from '../../assets/images/bg.png';
 import { useAuth } from '../../hooks/auth';
@@ -91,6 +92,8 @@ const Profile = () => {
             <TouchableOpacity onPress={() => navigation.goBack()}>
               <Icon name="arrow-left-circle" size={32} color="#fff" />
             </TouchableOpacity>
+
+            <TextToSpeechButton text="Toque no avatar para alterar o mesmo. Digite um nome e uma senha nos campos abaixo, e toque no botão rosa se quiser salvar." />
           </Header>
 
           <AvatarWrapper>

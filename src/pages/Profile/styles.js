@@ -10,8 +10,11 @@ export const Container = styled.ImageBackground`
 
 export const Header = styled.View`
   padding: ${getStatusBarHeight()}px 0 30px 0;
+  width: 100%;
 
-  align-self: flex-start;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 export const AvatarWrapper = styled.View`
