@@ -6,7 +6,12 @@ export const Header = styled.View`
   padding: ${getStatusBarHeight()}px 0 30px 0;
 
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const ProfileContainer = styled.View`
+  flex-direction: row;
   align-items: center;
 `;
 
@@ -16,8 +21,6 @@ export const UserName = styled.Text`
   font-family: 'Nunito-SemiBold';
   margin-right: 15px;
 `;
-
-export const ProfileButton = styled.TouchableOpacity``;
 
 export const UserAvatar = styled.Image`
   width: 56px;

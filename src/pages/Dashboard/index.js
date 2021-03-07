@@ -1,8 +1,15 @@
 import React, { useCallback } from 'react';
-import { ImageBackground, Button, ScrollView } from 'react-native';
+import {
+  ImageBackground,
+  Button,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { useAuth } from '../../hooks/auth';
+
+import TextToSpeechButton from '../../components/TextToSpeechButton';
 
 import dashboardBgImg from '../../assets/images/dashboardBg.png';
 import writingImg from '../../assets/images/writing.png';
@@ -11,8 +18,8 @@ import capitalizeFirstLetter from '../../utils/capitalizeFirstLetter';
 
 import {
   Header,
+  ProfileContainer,
   UserName,
-  ProfileButton,
   UserAvatar,
   NamingButton,
   NamingImageWrapper,
@@ -44,16 +51,21 @@ const Dashboard = () => {
         contentContainerStyle={{ flex: 1 }}
       >
         <Header>
-          <UserName>{capitalizeFirstLetter(user.name)}</UserName>
+          <TextToSpeechButton
+            text={`Bem-vindo ${user.name}! Toque no seu avatar para acessar seu perfil. Para iniciar a nomeação de palavras, toque no card rosa abaixo. Para iniciar a nomeação de figuras, toque no card verde.`}
+          />
 
-          <ProfileButton onPress={navigateToProfile}>
-            <UserAvatar
-              source={{
-                uri:
-                  'https://ramcotubular.com/wp-content/uploads/default-avatar.jpg',
-              }}
-            />
-          </ProfileButton>
+          <ProfileContainer>
+            <UserName>{capitalizeFirstLetter(user.name)}</UserName>
+            <TouchableOpacity onPress={navigateToProfile}>
+              <UserAvatar
+                source={{
+                  uri:
+                    'https://ramcotubular.com/wp-content/uploads/default-avatar.jpg',
+                }}
+              />
+            </TouchableOpacity>
+          </ProfileContainer>
         </Header>
 
         <NamingButton>
