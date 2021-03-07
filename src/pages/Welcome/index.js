@@ -2,11 +2,14 @@ import React from 'react';
 import LottieView from 'lottie-react-native';
 import { useNavigation } from '@react-navigation/native';
 
+import TextToSpeechButton from '../../components/TextToSpeechButton';
+
 import logoImg from '../../assets/images/logo.png';
 import astronaut from '../../assets/animations/astronaut.json';
 
 import {
   Container,
+  AudioButtonContainer,
   Image,
   Button,
   SignInButton,
@@ -19,6 +22,10 @@ const Welcome = () => {
   return (
     <>
       <Container colors={['rgba(33,39,101,1)', 'rgba(49,55,118,1)']}>
+        <AudioButtonContainer>
+          <TextToSpeechButton text="Bem-vindo! Clique no botão rosa para criar uma conta, ou no botão no fim da tela para entrar." />
+        </AudioButtonContainer>
+
         <LottieView source={astronaut} autoPlay loop style={{ width: 250 }} />
 
         <Image source={logoImg} />

@@ -11,6 +11,12 @@ export const Container = styled(LinearGradient)`
   padding: 0 30px;
 `;
 
+export const AudioButtonContainer = styled.View`
+  height: 28px;
+  width: 100%;
+  align-items: flex-start;
+`;
+
 export const Image = styled.Image`
   margin-top: 20px;
   width: 160px;
