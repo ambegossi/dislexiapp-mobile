@@ -37,6 +37,10 @@ const Dashboard = () => {
     navigate('Profile');
   }, [navigate]);
 
+  const navigateToWordNamingInstructions = useCallback(() => {
+    navigate('WordNamingInstructions');
+  }, [navigate]);
+
   return (
     <ImageBackground
       source={dashboardBgImg}
@@ -68,7 +72,7 @@ const Dashboard = () => {
           </ProfileContainer>
         </Header>
 
-        <NamingButton>
+        <NamingButton onPress={navigateToWordNamingInstructions}>
           <NamingImageWrapper
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 0 }}
