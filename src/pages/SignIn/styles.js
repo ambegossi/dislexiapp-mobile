@@ -6,14 +6,16 @@ import ButtonComponent from '../../components/Button';
 
 export const Container = styled(LinearGradient)`
   flex: 1;
+  padding: 0 30px;
+
   justify-content: center;
   align-items: center;
-  padding: 0 30px;
 `;
 
 export const TextToSpeechButtonContainer = styled.View`
   height: 28px;
   width: 100%;
+
   align-items: flex-start;
 `;
 
