@@ -14,21 +14,14 @@ import * as yup from 'yup';
 
 import Input from '../../components/Input';
 import TextToSpeechButton from '../../components/TextToSpeechButton';
+import ProgressBar from '../../components/ProgressBar';
 
 import bgImg from '../../assets/images/bg.png';
 import { useAuth } from '../../hooks/auth';
 import capitalizeFirstLetter from '../../utils/capitalizeFirstLetter';
 import api from '../../services/api';
 
-import {
-  Container,
-  Header,
-  AvatarWrapper,
-  UserAvatar,
-  Button,
-  ProgressBar,
-  UserProgress,
-} from './styles';
+import { Container, Header, AvatarWrapper, UserAvatar, Button } from './styles';
 
 const schema = yup.object().shape({
   name: yup.string().required('O nome é obrigatório'),
@@ -106,9 +99,7 @@ const Profile = () => {
               />
             </TouchableOpacity>
 
-            <ProgressBar>
-              <UserProgress />
-            </ProgressBar>
+            <ProgressBar progress={1} total={2} />
           </AvatarWrapper>
 
           <Input

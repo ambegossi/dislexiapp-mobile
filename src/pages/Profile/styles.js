@@ -37,17 +37,3 @@ export const UserAvatar = styled.Image`
 export const Button = styled(ButtonComponent)`
   margin-top: 15px;
 `;
-
-export const ProgressBar = styled.View`
-  width: 125px;
-  height: 20px;
-  background-color: #fff;
-  border-radius: 10px;
-`;
-
-export const UserProgress = styled.View`
-  width: 40px;
-  height: 20px;
-  border-radius: 10px;
-  background-color: #04d361;
-`;
