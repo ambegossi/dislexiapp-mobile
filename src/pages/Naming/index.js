@@ -52,7 +52,7 @@ const Naming = ({ route }) => {
 
       setProgress(progress + 1);
     } else {
-      navigation.navigate('NamingConcluded', {
+      navigation.navigate('NamingCompleted', {
         stimulusList,
         namingType,
         results,

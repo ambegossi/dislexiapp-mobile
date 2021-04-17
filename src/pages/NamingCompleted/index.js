@@ -12,7 +12,7 @@ import check from '../../assets/animations/check.json';
 
 import { Container, Header } from './styles';
 
-const NamingConcluded = ({ route }) => {
+const NamingCompleted = ({ route }) => {
   const { stimulusList, results } = route.params;
 
   const navigation = useNavigation();
@@ -45,7 +45,7 @@ const NamingConcluded = ({ route }) => {
   );
 };
 
-NamingConcluded.propTypes = {
+NamingCompleted.propTypes = {
   route: PropTypes.shape({
     params: PropTypes.shape({
       stimulusList: PropTypes.arrayOf(
@@ -63,4 +63,4 @@ NamingConcluded.propTypes = {
   }).isRequired,
 };
 
-export default NamingConcluded;
+export default NamingCompleted;
