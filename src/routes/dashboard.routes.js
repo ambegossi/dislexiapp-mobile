@@ -7,6 +7,7 @@ import NamingInstructions from '../pages/NamingInstructions';
 import Naming from '../pages/Naming';
 import NamingCompleted from '../pages/NamingCompleted';
 import Review from '../pages/Review';
+import ReviewCompleted from '../pages/ReviewCompleted';
 
 const Dashboard = createStackNavigator();
 
@@ -26,6 +27,7 @@ const DashboardRoutes = () => (
     <Dashboard.Screen name="Naming" component={Naming} />
     <Dashboard.Screen name="NamingCompleted" component={NamingCompleted} />
     <Dashboard.Screen name="Review" component={Review} />
+    <Dashboard.Screen name="ReviewCompleted" component={ReviewCompleted} />
   </Dashboard.Navigator>
 );
 

@@ -39,7 +39,7 @@ const Review = ({ route }) => {
 
       setProgress(progress + 1);
     } else {
-      navigation.navigate('Naming', {
+      navigation.navigate('ReviewCompleted', {
         stimulusList,
         namingType,
       });
