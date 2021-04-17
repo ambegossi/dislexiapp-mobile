@@ -3,7 +3,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import DashboardPage from '../pages/Dashboard';
 import Profile from '../pages/Profile';
-import WordNamingInstructions from '../pages/WordNamingInstructions';
+import NamingInstructions from '../pages/NamingInstructions';
+import Naming from '../pages/Naming';
+import NamingConcluded from '../pages/NamingConcluded';
+import Review from '../pages/Review';
 
 const Dashboard = createStackNavigator();
 
@@ -17,9 +20,12 @@ const DashboardRoutes = () => (
     <Dashboard.Screen name="Dashboard" component={DashboardPage} />
     <Dashboard.Screen name="Profile" component={Profile} />
     <Dashboard.Screen
-      name="WordNamingInstructions"
-      component={WordNamingInstructions}
+      name="NamingInstructions"
+      component={NamingInstructions}
     />
+    <Dashboard.Screen name="Naming" component={Naming} />
+    <Dashboard.Screen name="NamingConcluded" component={NamingConcluded} />
+    <Dashboard.Screen name="Review" component={Review} />
   </Dashboard.Navigator>
 );
 
