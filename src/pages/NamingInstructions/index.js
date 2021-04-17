@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ScrollView, TouchableOpacity, Alert } from 'react-native';
 import LottieView from 'lottie-react-native';
 import Icon from 'react-native-vector-icons/Feather';
@@ -12,6 +12,7 @@ import bgImg from '../../assets/images/bg.png';
 import moonRun from '../../assets/animations/moonRun.json';
 import { useAuth } from '../../hooks/auth';
 import api from '../../services/api';
+import { playAudio } from '../../utils/audio';
 
 import { Container, Header, Text } from './styles';
 
@@ -54,6 +55,15 @@ const NamingInstructions = ({ route }) => {
     namingType === 'words'
       ? 'Nomeie as palavras o mais rápido que conseguir!'
       : 'Nomeie as figuras o mais rápido que conseguir!';
+
+  useEffect(() => {
+    if (namingType === 'words') {
+      playAudio('nomeie_palavras.wav');
+    } else {
+      playAudio('nomeie_figuras.wav');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <ScrollView

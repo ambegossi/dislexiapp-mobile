@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import { useNavigation } from '@react-navigation/native';
@@ -6,6 +6,8 @@ import PropTypes from 'prop-types';
 
 import Button from '../../components/Button';
 import ProgressBar from '../../components/ProgressBar';
+
+import { playAudio } from '../../utils/audio';
 
 import bgImg from '../../assets/images/bg.png';
 
@@ -25,6 +27,7 @@ const Review = ({ route }) => {
   const navigation = useNavigation();
 
   const [currentStimulus, setCurrentStimulus] = useState(stimulusList[0]);
+  const [currentResult, setCurrentResult] = useState(results[0]);
   const [currentStimulusListIndex, setCurrentStimulusListIndex] = useState(0);
   const [progress, setProgress] = useState(0);
 
@@ -32,6 +35,7 @@ const Review = ({ route }) => {
     if (currentStimulusListIndex < stimulusList.length - 1) {
       setCurrentStimulus(stimulusList[currentStimulusListIndex + 1]);
       setCurrentStimulusListIndex(currentStimulusListIndex + 1);
+      setCurrentResult(results[currentStimulusListIndex + 1]);
 
       setProgress(progress + 1);
     } else {
@@ -41,6 +45,14 @@ const Review = ({ route }) => {
       });
     }
   };
+
+  useEffect(() => {
+    if (currentResult.isCorrect) {
+      playAudio('correct.wav');
+    } else {
+      playAudio('wrong.wav');
+    }
+  }, [currentResult]);
 
   return (
     <ScrollView
@@ -56,9 +68,9 @@ const Review = ({ route }) => {
         </Header>
 
         <Wrapper>
-          <ResultIcon isCorrect={results[currentStimulusListIndex].isCorrect}>
+          <ResultIcon isCorrect={currentResult.isCorrect}>
             <Icon
-              name={results[currentStimulusListIndex].isCorrect ? 'check' : 'x'}
+              name={currentResult.isCorrect ? 'check' : 'x'}
               size={33}
               color="#fff"
             />
