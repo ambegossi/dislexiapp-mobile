@@ -38,7 +38,9 @@ const Dashboard = () => {
   }, [navigate]);
 
   const navigateToWordNamingInstructions = useCallback(() => {
-    navigate('WordNamingInstructions');
+    navigate('NamingInstructions', {
+      namingType: 'words',
+    });
   }, [navigate]);
 
   return (
