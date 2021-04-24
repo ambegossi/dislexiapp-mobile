@@ -22,6 +22,12 @@
 		883673CF39ABED416DDA3948 /* libPods-dislexiapp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F18D5CD584050B7ACDDDB5C /* libPods-dislexiapp.a */; };
 		D17D05917DC93EF75FF8F097 /* libPods-dislexiapp-dislexiappTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6C8B301AD55D99978A08068 /* libPods-dislexiapp-dislexiappTests.a */; };
 		D8D1D3AFBBC5EFC918F48AE6 /* libPods-dislexiapp-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EADEC2ACBF6D5E039A6C167 /* libPods-dislexiapp-tvOS.a */; };
+		E7378AE4262CD86100F97F35 /* correct.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7378ADE262CD86100F97F35 /* correct.wav */; };
+		E7378AE5262CD86100F97F35 /* success.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7378ADF262CD86100F97F35 /* success.wav */; };
+		E7378AE6262CD86100F97F35 /* completed.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7378AE0262CD86100F97F35 /* completed.wav */; };
+		E7378AE7262CD86100F97F35 /* nomeie_palavras.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7378AE1262CD86100F97F35 /* nomeie_palavras.wav */; };
+		E7378AE8262CD86100F97F35 /* wrong.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7378AE2262CD86100F97F35 /* wrong.wav */; };
+		E7378AE9262CD86100F97F35 /* nomeie_figuras.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7378AE3262CD86100F97F35 /* nomeie_figuras.wav */; };
 		EDAF80D2FCBB45BEB36B5119 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4AA6CCA8252A4617B7988C4B /* Nunito-SemiBold.ttf */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +75,12 @@
 		B6C8B301AD55D99978A08068 /* libPods-dislexiapp-dislexiappTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-dislexiapp-dislexiappTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA02C7AFD64A951211454D5D /* Pods-dislexiapp-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dislexiapp-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-dislexiapp-tvOSTests/Pods-dislexiapp-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DEC3B3CA752B3DEEBF70A590 /* Pods-dislexiapp-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dislexiapp-tvOS.release.xcconfig"; path = "Target Support Files/Pods-dislexiapp-tvOS/Pods-dislexiapp-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		E7378ADE262CD86100F97F35 /* correct.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = correct.wav; path = ../android/app/src/main/res/raw/correct.wav; sourceTree = "<group>"; };
+		E7378ADF262CD86100F97F35 /* success.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = success.wav; path = ../android/app/src/main/res/raw/success.wav; sourceTree = "<group>"; };
+		E7378AE0262CD86100F97F35 /* completed.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = completed.wav; path = ../android/app/src/main/res/raw/completed.wav; sourceTree = "<group>"; };
+		E7378AE1262CD86100F97F35 /* nomeie_palavras.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = nomeie_palavras.wav; path = ../android/app/src/main/res/raw/nomeie_palavras.wav; sourceTree = "<group>"; };
+		E7378AE2262CD86100F97F35 /* wrong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = wrong.wav; path = ../android/app/src/main/res/raw/wrong.wav; sourceTree = "<group>"; };
+		E7378AE3262CD86100F97F35 /* nomeie_figuras.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = nomeie_figuras.wav; path = ../android/app/src/main/res/raw/nomeie_figuras.wav; sourceTree = "<group>"; };
 		EB5503B921FB4F2EBE92C387 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-Regular.ttf"; path = "../assets/fonts/Nunito-Regular.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -175,6 +187,12 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				E7378AE0262CD86100F97F35 /* completed.wav */,
+				E7378ADE262CD86100F97F35 /* correct.wav */,
+				E7378AE3262CD86100F97F35 /* nomeie_figuras.wav */,
+				E7378AE1262CD86100F97F35 /* nomeie_palavras.wav */,
+				E7378ADF262CD86100F97F35 /* success.wav */,
+				E7378AE2262CD86100F97F35 /* wrong.wav */,
 				13B07FAE1A68108700A75B9A /* dislexiapp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* dislexiappTests */,
@@ -359,8 +377,14 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				04B93647F91E4948B75C4447 /* Nunito-Bold.ttf in Resources */,
+				E7378AE9262CD86100F97F35 /* nomeie_figuras.wav in Resources */,
+				E7378AE5262CD86100F97F35 /* success.wav in Resources */,
+				E7378AE7262CD86100F97F35 /* nomeie_palavras.wav in Resources */,
 				288CF51217084748BF21ACF6 /* Nunito-Regular.ttf in Resources */,
+				E7378AE8262CD86100F97F35 /* wrong.wav in Resources */,
 				EDAF80D2FCBB45BEB36B5119 /* Nunito-SemiBold.ttf in Resources */,
+				E7378AE6262CD86100F97F35 /* completed.wav in Resources */,
+				E7378AE4262CD86100F97F35 /* correct.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
