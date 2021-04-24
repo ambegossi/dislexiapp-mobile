@@ -45,7 +45,25 @@ const Naming = ({ route }) => {
   const [recording, setRecording] = useState(false);
   const [recognitionLoading, setRecognitionLoading] = useState(false);
 
+  const addNewResult = result => {
+    const newResults = results;
+
+    newResults[currentStimulusListIndex] = result;
+
+    setResults(newResults);
+  };
+
   const handleNext = () => {
+    if (!results[currentStimulusListIndex]) {
+      const result = {
+        stimulus: currentStimulus,
+        recognized: false,
+        isCorrect: false,
+      };
+
+      addNewResult(result);
+    }
+
     if (currentStimulusListIndex < stimulusList.length - 1) {
       setCurrentStimulus(stimulusList[currentStimulusListIndex + 1]);
       setCurrentStimulusListIndex(currentStimulusListIndex + 1);
@@ -142,11 +160,7 @@ const Naming = ({ route }) => {
         isCorrect: data.recognition ? data.recognition.isCorrect : false,
       };
 
-      const newResults = results;
-
-      newResults[currentStimulusListIndex] = result;
-
-      setResults(newResults);
+      addNewResult(result);
     } catch (err) {
       console.error('error recognizing', err);
     }
