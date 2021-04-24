@@ -34,7 +34,7 @@ const TextToSpeechButton = ({ text }) => {
       const { data } = await ttsApi.post('', payload);
 
       await createFile(path, data.audioContent);
-      playAudio(path);
+      playAudio(path, false);
     } catch (err) {
       console.error('tts error', err);
     }

@@ -170,7 +170,7 @@ const Naming = ({ route }) => {
     >
       <Container source={bgImg}>
         <Header>
-          <ProgressBar progress={progress} width={170} total={5} />
+          <ProgressBar progress={progress} width={170} total={2} />
         </Header>
 
         <Wrapper>

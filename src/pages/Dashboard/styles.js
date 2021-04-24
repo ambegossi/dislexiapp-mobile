@@ -1,9 +1,15 @@
 import styled from 'styled-components/native';
+import { Platform } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 
 export const Header = styled.View`
-  padding: ${getStatusBarHeight()}px 0 30px 0;
+  padding-top: ${Platform.OS === 'ios'
+    ? getStatusBarHeight() + 40
+    : getStatusBarHeight()}px;
+  width: 100%;
+  position: absolute;
+  top: 0;
 
   flex-direction: row;
   justify-content: space-between;
@@ -26,13 +32,12 @@ export const UserAvatar = styled.Image`
   width: 56px;
   height: 56px;
   border-radius: 28px;
-
   border-width: 3px;
   border-color: #be1fd3;
 `;
 
 export const NamingButton = styled.TouchableOpacity`
-  margin-bottom: 25px;
+  margin-bottom: 35px;
 `;
 
 export const NamingImageWrapper = styled(LinearGradient)`

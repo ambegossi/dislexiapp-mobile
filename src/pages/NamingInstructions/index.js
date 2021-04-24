@@ -29,7 +29,7 @@ const NamingInstructions = ({ route }) => {
     setLoading(true);
     try {
       const { data } = await api.get(`/stimulus/${user.profile_id}`, {
-        params: { number: 5 },
+        params: { number: 2 },
       });
 
       navigation.navigate('Naming', {
@@ -58,9 +58,9 @@ const NamingInstructions = ({ route }) => {
 
   useEffect(() => {
     if (namingType === 'words') {
-      playAudio('nomeie_palavras.wav');
+      playAudio('nomeie_palavras.wav', true);
     } else {
-      playAudio('nomeie_figuras.wav');
+      playAudio('nomeie_figuras.wav', true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

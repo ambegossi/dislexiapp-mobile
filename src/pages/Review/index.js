@@ -48,9 +48,9 @@ const Review = ({ route }) => {
 
   useEffect(() => {
     if (currentResult.isCorrect) {
-      playAudio('correct.wav');
+      playAudio('correct.wav', true);
     } else {
-      playAudio('wrong.wav');
+      playAudio('wrong.wav', true);
     }
   }, [currentResult]);
 
@@ -64,7 +64,7 @@ const Review = ({ route }) => {
     >
       <Container source={bgImg}>
         <Header>
-          <ProgressBar progress={progress} width={170} total={5} />
+          <ProgressBar progress={progress} width={170} total={2} />
         </Header>
 
         <Wrapper>

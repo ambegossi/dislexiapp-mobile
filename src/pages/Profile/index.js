@@ -16,12 +16,20 @@ import Input from '../../components/Input';
 import TextToSpeechButton from '../../components/TextToSpeechButton';
 import ProgressBar from '../../components/ProgressBar';
 
-import bgImg from '../../assets/images/bg.png';
 import { useAuth } from '../../hooks/auth';
-import capitalizeFirstLetter from '../../utils/capitalizeFirstLetter';
 import api from '../../services/api';
+import capitalizeFirstLetter from '../../utils/capitalizeFirstLetter';
 
-import { Container, Header, AvatarWrapper, UserAvatar, Button } from './styles';
+import bgImg from '../../assets/images/bg.png';
+
+import {
+  Container,
+  Header,
+  AvatarWrapper,
+  UserAvatar,
+  SignOutButton,
+  Button,
+} from './styles';
 
 const schema = yup.object().shape({
   name: yup.string().required('O nome é obrigatório'),
@@ -38,7 +46,7 @@ const schema = yup.object().shape({
 const Profile = () => {
   const navigation = useNavigation();
 
-  const { user, updateUser } = useAuth();
+  const { user, updateUser, signOut } = useAuth();
 
   const [loading, setLoading] = useState(false);
 
@@ -79,7 +87,12 @@ const Profile = () => {
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
       enabled
     >
-      <ScrollView keyboardShouldPersistTaps="handled" style={{ flex: 1 }}>
+      <ScrollView
+        keyboardShouldPersistTaps="handled"
+        contentContainerStyle={{
+          flex: 1,
+        }}
+      >
         <Container source={bgImg}>
           <Header>
             <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -144,6 +157,8 @@ const Profile = () => {
             onSubmitEditing={handleSubmit(onSubmit)}
             textContentType="newPassword"
           />
+
+          <SignOutButton onPress={signOut}>Sair</SignOutButton>
 
           <Button loading={loading} onPress={handleSubmit(onSubmit)}>
             Salvar

@@ -1,20 +1,15 @@
 import React, { useCallback } from 'react';
-import {
-  ImageBackground,
-  Button,
-  ScrollView,
-  TouchableOpacity,
-} from 'react-native';
+import { ImageBackground, ScrollView, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import { useAuth } from '../../hooks/auth';
-
 import TextToSpeechButton from '../../components/TextToSpeechButton';
+
+import { useAuth } from '../../hooks/auth';
+import capitalizeFirstLetter from '../../utils/capitalizeFirstLetter';
 
 import dashboardBgImg from '../../assets/images/dashboardBg.png';
 import writingImg from '../../assets/images/writing.png';
 import astronautImg from '../../assets/images/astronaut.png';
-import capitalizeFirstLetter from '../../utils/capitalizeFirstLetter';
 
 import {
   Header,
@@ -29,7 +24,7 @@ import {
 } from './styles';
 
 const Dashboard = () => {
-  const { user, signOut } = useAuth();
+  const { user } = useAuth();
 
   const { navigate } = useNavigation();
 
@@ -54,7 +49,7 @@ const Dashboard = () => {
     >
       <ScrollView
         keyboardShouldPersistTaps="handled"
-        contentContainerStyle={{ flex: 1 }}
+        contentContainerStyle={{ flex: 1, justifyContent: 'center' }}
       >
         <Header>
           <TextToSpeechButton
@@ -99,8 +94,6 @@ const Dashboard = () => {
             <NamingTitle>Figuras</NamingTitle>
           </NamingBottomContainer>
         </NamingButton>
-
-        <Button onPress={signOut} title="sair" />
       </ScrollView>
     </ImageBackground>
   );

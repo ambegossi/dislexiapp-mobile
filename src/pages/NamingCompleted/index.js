@@ -20,7 +20,7 @@ const NamingCompleted = ({ route }) => {
   const navigation = useNavigation();
 
   useEffect(() => {
-    playAudio('completed.wav');
+    playAudio('completed.wav', true);
   }, []);
 
   const handleReview = () => {
@@ -48,7 +48,7 @@ const NamingCompleted = ({ route }) => {
           source={check}
           autoPlay
           loop={false}
-          style={{ width: 230 }}
+          style={{ width: 230, marginBottom: 35 }}
         />
 
         <Button onPress={handleReview}>Revisar</Button>

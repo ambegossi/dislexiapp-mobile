@@ -1,15 +1,21 @@
 import styled from 'styled-components/native';
+import { Platform } from 'react-native';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 
 import ButtonComponent from '../../components/Button';
 
 export const Container = styled.ImageBackground`
   flex: 1;
-  padding: 0 30px;
+  padding: 0 30px 20px 30px;
+
+  align-items: center;
 `;
 
 export const Header = styled.View`
-  padding: ${getStatusBarHeight()}px 0 30px 0;
+  padding: ${Platform.OS === 'ios'
+      ? getStatusBarHeight() + 40
+      : getStatusBarHeight()}px
+    0 35px 0;
   width: 100%;
 
   flex-direction: row;
@@ -18,7 +24,7 @@ export const Header = styled.View`
 `;
 
 export const AvatarWrapper = styled.View`
-  margin-bottom: 30px;
+  margin-bottom: 35px;
 
   flex-direction: row;
   align-items: center;
@@ -32,6 +38,11 @@ export const UserAvatar = styled.Image`
   border-width: 3px;
   border-color: #be1fd3;
   margin-right: 20px;
+`;
+
+export const SignOutButton = styled(ButtonComponent)`
+  margin-top: 15px;
+  background: #ca0000;
 `;
 
 export const Button = styled(ButtonComponent)`
