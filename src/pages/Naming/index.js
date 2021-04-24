@@ -136,15 +136,17 @@ const Naming = ({ route }) => {
     try {
       const { data } = await api.post('/stimulus/recognize', formData);
 
-      if (data.recognized) {
-        const result = {
-          stimulus: currentStimulus,
-          recognized: true,
-          isCorrect: data.recognition.isCorrect,
-        };
+      const result = {
+        stimulus: currentStimulus,
+        recognized: data.recognized,
+        isCorrect: data.recognition ? data.recognition.isCorrect : false,
+      };
 
-        setResults(resultsState => [...resultsState, result]);
-      }
+      const newResults = results;
+
+      newResults[currentStimulusListIndex] = result;
+
+      setResults(newResults);
     } catch (err) {
       console.error('error recognizing', err);
     }
@@ -201,9 +203,7 @@ const Naming = ({ route }) => {
                 name="mic"
                 size={35}
                 color={
-                  results.length > 0 &&
-                  !!results[currentStimulusListIndex] &&
-                  results[currentStimulusListIndex].recognized
+                  results.length > 0 && !!results[currentStimulusListIndex]
                     ? '#04d361'
                     : '#000'
                 }
