@@ -14,6 +14,7 @@ import Button from '../../components/Button';
 import ProgressBar from '../../components/ProgressBar';
 
 import api from '../../services/api';
+import { playAudio } from '../../utils/audio';
 
 import bgImg from '../../assets/images/bg.png';
 import audioWave from '../../assets/icons/audioWave.png';
@@ -22,6 +23,7 @@ import {
   Container,
   Header,
   Wrapper,
+  ResultIcon,
   Image,
   WordContainer,
   Word,
@@ -33,7 +35,7 @@ import {
 const filename = 'audio.aac';
 
 const Naming = ({ route }) => {
-  const { stimulusList, namingType } = route.params;
+  const { stimulusList, namingType, step } = route.params;
 
   const navigation = useNavigation();
 
@@ -51,10 +53,18 @@ const Naming = ({ route }) => {
     newResults[currentStimulusListIndex] = result;
 
     setResults(newResults);
+
+    if (step === 2) {
+      if (result.isCorrect) {
+        playAudio('correct.wav', true);
+      } else {
+        playAudio('wrong.wav', true);
+      }
+    }
   };
 
   const handleNext = () => {
-    if (!results[currentStimulusListIndex]) {
+    if (step === 1 && !results[currentStimulusListIndex]) {
       const result = {
         stimulus: currentStimulus,
         recognized: false,
@@ -64,17 +74,25 @@ const Naming = ({ route }) => {
       addNewResult(result);
     }
 
-    if (currentStimulusListIndex < stimulusList.length - 1) {
-      setCurrentStimulus(stimulusList[currentStimulusListIndex + 1]);
-      setCurrentStimulusListIndex(currentStimulusListIndex + 1);
+    if (
+      step === 1 ||
+      (!!results[currentStimulusListIndex] &&
+        results[currentStimulusListIndex].isCorrect)
+    ) {
+      if (currentStimulusListIndex < stimulusList.length - 1) {
+        setCurrentStimulus(stimulusList[currentStimulusListIndex + 1]);
+        setCurrentStimulusListIndex(currentStimulusListIndex + 1);
 
-      setProgress(progress + 1);
-    } else {
-      navigation.navigate('NamingCompleted', {
-        stimulusList,
-        namingType,
-        results,
-      });
+        setProgress(progress + 1);
+      } else if (step === 1) {
+        navigation.navigate('NamingCompleted', {
+          stimulusList,
+          namingType,
+          results,
+        });
+      } else {
+        navigation.navigate('NARCompleted');
+      }
     }
   };
 
@@ -176,6 +194,22 @@ const Naming = ({ route }) => {
     await handleRecognizeAudio(audioPath);
   };
 
+  const getMicIconColor = () => {
+    if (step === 1) {
+      return results.length > 0 && !!results[currentStimulusListIndex]
+        ? '#04d361'
+        : '#000';
+    }
+
+    if (results[currentStimulusListIndex]) {
+      return results[currentStimulusListIndex].isCorrect
+        ? '#04d361'
+        : '#ca0000';
+    }
+
+    return '#000';
+  };
+
   return (
     <ScrollView
       keyboardShouldPersistTaps="handled"
@@ -190,6 +224,17 @@ const Naming = ({ route }) => {
         </Header>
 
         <Wrapper>
+          {step === 2 && !!results[currentStimulusListIndex] && (
+            <ResultIcon isCorrect={results[currentStimulusListIndex].isCorrect}>
+              <Icon
+                name={
+                  results[currentStimulusListIndex].isCorrect ? 'check' : 'x'
+                }
+                size={33}
+                color="#fff"
+              />
+            </ResultIcon>
+          )}
           {namingType === 'words' ? (
             <WordContainer>
               <Word>{currentStimulus.word}</Word>
@@ -213,15 +258,7 @@ const Naming = ({ route }) => {
             <ActivityIndicator color="#fff" size="large" />
           ) : (
             <MicButton onPressIn={startRecording} onPressOut={stopRecording}>
-              <Icon
-                name="mic"
-                size={35}
-                color={
-                  results.length > 0 && !!results[currentStimulusListIndex]
-                    ? '#04d361'
-                    : '#000'
-                }
-              />
+              <Icon name="mic" size={35} color={getMicIconColor()} />
             </MicButton>
           )}
         </Wrapper>
@@ -242,6 +279,7 @@ Naming.propTypes = {
         }),
       ).isRequired,
       namingType: PropTypes.oneOf(['words', 'figures']).isRequired,
+      step: PropTypes.number.isRequired,
     }).isRequired,
   }).isRequired,
 };

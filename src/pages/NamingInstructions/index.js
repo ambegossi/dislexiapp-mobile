@@ -35,6 +35,7 @@ const NamingInstructions = ({ route }) => {
       navigation.navigate('Naming', {
         stimulusList: data,
         namingType,
+        step: 1,
       });
     } catch (err) {
       Alert.alert(

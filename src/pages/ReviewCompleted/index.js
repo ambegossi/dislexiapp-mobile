@@ -27,6 +27,7 @@ const ReviewCompleted = ({ route }) => {
     navigation.replace('Naming', {
       stimulusList,
       namingType,
+      step: 2,
     });
   };
 
