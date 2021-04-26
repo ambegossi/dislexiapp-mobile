@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
 import { ActivityIndicator, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
-import RNFS from 'react-native-fs';
 import PropTypes from 'prop-types';
 
-import createFile from '../../utils/createFile';
-import ttsApi from '../../services/ttsApi';
-import { playAudio } from '../../utils/audio';
+import { speech } from '../../utils/voice';
 
 const TextToSpeechButton = ({ text }) => {
   const [loading, setLoading] = useState(false);
@@ -15,26 +12,7 @@ const TextToSpeechButton = ({ text }) => {
     setLoading(true);
 
     try {
-      const path = `${RNFS.DocumentDirectoryPath}/voice.mp3`;
-
-      const payload = {
-        input: {
-          text,
-        },
-        voice: {
-          languageCode: 'pt-br',
-          name: 'pt-BR-Standard-A',
-          ssmlGender: 'FEMALE',
-        },
-        audioConfig: {
-          audioEncoding: 'MP3',
-        },
-      };
-
-      const { data } = await ttsApi.post('', payload);
-
-      await createFile(path, data.audioContent);
-      playAudio(path, false);
+      await speech(text);
     } catch (err) {
       console.error('tts error', err);
     }
