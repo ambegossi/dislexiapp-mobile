@@ -4,13 +4,17 @@ import PropTypes from 'prop-types';
 
 import { Container, ButtonText } from './styles';
 
-const Button = ({ children, loading, ...rest }) => {
+const Button = ({ children, loading, icon, ...rest }) => {
   return (
     <Container enabled={!loading} loading={loading} {...rest}>
       {loading ? (
         <ActivityIndicator size="small" color="#fff" />
       ) : (
-        <ButtonText>{children}</ButtonText>
+        <>
+          <ButtonText>{children}</ButtonText>
+
+          {!!icon && icon}
+        </>
       )}
     </Container>
   );
@@ -19,10 +23,12 @@ const Button = ({ children, loading, ...rest }) => {
 Button.propTypes = {
   children: PropTypes.string.isRequired,
   loading: PropTypes.bool,
+  icon: PropTypes.node,
 };
 
 Button.defaultProps = {
   loading: false,
+  icon: null,
 };
 
 export default Button;
