@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, ActivityIndicator } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import { useNavigation } from '@react-navigation/native';
 import PropTypes from 'prop-types';
@@ -8,6 +8,7 @@ import Button from '../../components/Button';
 import ProgressBar from '../../components/ProgressBar';
 
 import { playAudio } from '../../utils/audio';
+import { speech } from '../../utils/voice';
 
 import bgImg from '../../assets/images/bg.png';
 
@@ -19,6 +20,7 @@ import {
   StimulusImage,
   WordContainer,
   Word,
+  SoundButton,
 } from './styles';
 
 const Review = ({ route }) => {
@@ -30,6 +32,7 @@ const Review = ({ route }) => {
   const [currentResult, setCurrentResult] = useState(results[0]);
   const [currentStimulusListIndex, setCurrentStimulusListIndex] = useState(0);
   const [progress, setProgress] = useState(0);
+  const [speechLoading, setSpeechLoading] = useState(false);
 
   const handleNext = () => {
     if (currentStimulusListIndex < stimulusList.length - 1) {
@@ -53,6 +56,14 @@ const Review = ({ route }) => {
       playAudio('wrong.wav', true);
     }
   }, [currentResult]);
+
+  const handleSpeech = async () => {
+    setSpeechLoading(true);
+
+    await speech(currentStimulus.word);
+
+    setSpeechLoading(false);
+  };
 
   return (
     <ScrollView
@@ -86,6 +97,14 @@ const Review = ({ route }) => {
           <WordContainer>
             <Word>{currentStimulus.word}</Word>
           </WordContainer>
+
+          <SoundButton onPress={handleSpeech}>
+            {speechLoading ? (
+              <ActivityIndicator color="#000" size="small" />
+            ) : (
+              <Icon name="volume-2" size={35} color="#000" />
+            )}
+          </SoundButton>
         </Wrapper>
 
         <Button

@@ -50,7 +50,7 @@ export const WordContainer = styled.View`
   border-style: solid;
   border-width: 1px;
   margin-top: 20px;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 
   justify-content: center;
   align-items: center;
@@ -61,4 +61,14 @@ export const Word = styled.Text`
   font-size: 36px;
   font-family: 'Nunito-Bold';
   text-transform: capitalize;
+`;
+
+export const SoundButton = styled.TouchableOpacity`
+  width: 70px;
+  height: 70px;
+  border-radius: 35px;
+  background: #fff;
+
+  justify-content: center;
+  align-items: center;
 `;
