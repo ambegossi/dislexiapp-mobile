@@ -40,6 +40,7 @@ export const ResultIcon = styled.View`
 export const Image = styled.Image`
   height: 160px;
   width: 160px;
+  margin-bottom: 40px;
 `;
 
 export const WordContainer = styled.View`

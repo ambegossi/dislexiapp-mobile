@@ -32,11 +32,14 @@ const Dashboard = () => {
     navigate('Profile');
   }, [navigate]);
 
-  const navigateToWordNamingInstructions = useCallback(() => {
-    navigate('NamingInstructions', {
-      namingType: 'words',
-    });
-  }, [navigate]);
+  const navigateToNamingInstructions = useCallback(
+    namingType => {
+      navigate('NamingInstructions', {
+        namingType,
+      });
+    },
+    [navigate],
+  );
 
   return (
     <ImageBackground
@@ -69,7 +72,7 @@ const Dashboard = () => {
           </ProfileContainer>
         </Header>
 
-        <NamingButton onPress={navigateToWordNamingInstructions}>
+        <NamingButton onPress={() => navigateToNamingInstructions('words')}>
           <NamingImageWrapper
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 0 }}
@@ -82,7 +85,7 @@ const Dashboard = () => {
           </NamingBottomContainer>
         </NamingButton>
 
-        <NamingButton>
+        <NamingButton onPress={() => navigateToNamingInstructions('figures')}>
           <NamingImageWrapper
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 0 }}
