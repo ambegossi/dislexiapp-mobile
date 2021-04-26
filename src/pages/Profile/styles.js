@@ -40,6 +40,13 @@ export const UserAvatar = styled.Image`
   margin-right: 20px;
 `;
 
+export const Level = styled.Text`
+  color: #fff;
+  font-size: 18px;
+  font-family: 'Nunito-Bold';
+  margin-left: 10px;
+`;
+
 export const SignOutButton = styled(ButtonComponent)`
   margin-top: 15px;
   background: #ca0000;

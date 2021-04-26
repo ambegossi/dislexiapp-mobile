@@ -88,7 +88,12 @@ const Review = ({ route }) => {
           </WordContainer>
         </Wrapper>
 
-        <Button onPress={handleNext}>Avançar</Button>
+        <Button
+          icon={<Icon name="chevron-right" size={24} color="#fff" />}
+          onPress={handleNext}
+        >
+          Avançar
+        </Button>
       </Container>
     </ScrollView>
   );

@@ -27,6 +27,7 @@ import {
   Header,
   AvatarWrapper,
   UserAvatar,
+  Level,
   SignOutButton,
   Button,
 } from './styles';
@@ -64,9 +65,9 @@ const Profile = () => {
   const onSubmit = async data => {
     setLoading(true);
     try {
-      const response = await api.put('/profile', data);
+      const response = await api.put('/users', data);
 
-      updateUser(response.data);
+      await updateUser(response.data);
 
       Alert.alert('Perfil atualizado com sucesso!');
 
@@ -99,7 +100,7 @@ const Profile = () => {
               <Icon name="arrow-left-circle" size={32} color="#fff" />
             </TouchableOpacity>
 
-            <TextToSpeechButton text="Toque no avatar para alterar o mesmo. Digite um nome e uma senha nos campos abaixo, e toque no botão rosa se quiser salvar." />
+            <TextToSpeechButton text="Toque no avatar para alterá-lo. Digite um nome e uma senha nos campos abaixo, e toque no botão rosa se quiser salvar." />
           </Header>
 
           <AvatarWrapper>
@@ -112,7 +113,9 @@ const Profile = () => {
               />
             </TouchableOpacity>
 
-            <ProgressBar progress={1} total={2} />
+            <ProgressBar progress={user.profile.score % 30} total={30} />
+
+            <Level>{user.profile.level.toString()}</Level>
           </AvatarWrapper>
 
           <Input

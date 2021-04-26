@@ -4,6 +4,7 @@ import {
   Platform,
   PermissionsAndroid,
   ActivityIndicator,
+  Alert,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import { Recorder } from '@react-native-community/audio-toolkit';
@@ -13,6 +14,7 @@ import PropTypes from 'prop-types';
 import Button from '../../components/Button';
 import ProgressBar from '../../components/ProgressBar';
 
+import { useAuth } from '../../hooks/auth';
 import api from '../../services/api';
 import { playAudio } from '../../utils/audio';
 
@@ -39,6 +41,8 @@ const Naming = ({ route }) => {
 
   const navigation = useNavigation();
 
+  const { user, updateUser } = useAuth();
+
   const [currentStimulus, setCurrentStimulus] = useState(stimulusList[0]);
   const [currentStimulusListIndex, setCurrentStimulusListIndex] = useState(0);
   const [results, setResults] = useState([]);
@@ -46,6 +50,7 @@ const Naming = ({ route }) => {
   const [recorder, setRecorder] = useState(null);
   const [recording, setRecording] = useState(false);
   const [recognitionLoading, setRecognitionLoading] = useState(false);
+  const [updateProfileLoading, setUpdateProfileLoading] = useState(false);
 
   const addNewResult = result => {
     const newResults = results;
@@ -63,7 +68,34 @@ const Naming = ({ route }) => {
     }
   };
 
-  const handleNext = () => {
+  const handleUpdateProfile = async () => {
+    setUpdateProfileLoading(true);
+    try {
+      const { score, level } = user.profile;
+
+      const newScore = score + 5;
+
+      const data = {
+        score: newScore,
+        level: newScore % 30 === 0 ? level + 1 : level,
+      };
+
+      const response = await api.put('/profile', data);
+
+      await updateUser(response.data);
+
+      navigation.navigate('NARCompleted');
+    } catch (err) {
+      Alert.alert(
+        'Erro ao concluir a nomeação',
+        err.response?.data?.message ||
+          'Ocorreu um erro ao concluir a nomeação, tente novamente.',
+      );
+    }
+    setUpdateProfileLoading(false);
+  };
+
+  const handleNext = async () => {
     if (step === 1 && !results[currentStimulusListIndex]) {
       const result = {
         stimulus: currentStimulus,
@@ -91,7 +123,7 @@ const Naming = ({ route }) => {
           results,
         });
       } else {
-        navigation.navigate('NARCompleted');
+        await handleUpdateProfile();
       }
     }
   };
@@ -263,7 +295,13 @@ const Naming = ({ route }) => {
           )}
         </Wrapper>
 
-        <Button onPress={handleNext}>Avançar</Button>
+        <Button
+          icon={<Icon name="chevron-right" size={24} color="#fff" />}
+          loading={updateProfileLoading}
+          onPress={handleNext}
+        >
+          Avançar
+        </Button>
       </Container>
     </ScrollView>
   );
