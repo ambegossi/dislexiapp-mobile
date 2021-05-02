@@ -10,6 +10,7 @@ import capitalizeFirstLetter from '../../utils/capitalizeFirstLetter';
 import dashboardBgImg from '../../assets/images/dashboardBg.png';
 import writingImg from '../../assets/images/writing.png';
 import astronautImg from '../../assets/images/astronaut.png';
+import avatarDefaultImg from '../../assets/images/avatarDefault.png';
 
 import {
   Header,
@@ -63,10 +64,13 @@ const Dashboard = () => {
             <UserName>{capitalizeFirstLetter(user.name)}</UserName>
             <TouchableOpacity onPress={navigateToProfile}>
               <UserAvatar
-                source={{
-                  uri:
-                    'https://ramcotubular.com/wp-content/uploads/default-avatar.jpg',
-                }}
+                source={
+                  user.profile.avatar
+                    ? {
+                        uri: user.profile.avatar.image_url,
+                      }
+                    : avatarDefaultImg
+                }
               />
             </TouchableOpacity>
           </ProfileContainer>

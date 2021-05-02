@@ -21,6 +21,7 @@ import api from '../../services/api';
 import capitalizeFirstLetter from '../../utils/capitalizeFirstLetter';
 
 import bgImg from '../../assets/images/bg.png';
+import avatarDefaultImg from '../../assets/images/avatarDefault.png';
 
 import {
   Container,
@@ -82,6 +83,12 @@ const Profile = () => {
     setLoading(false);
   };
 
+  const handleNavigateToAvatar = () => {
+    navigation.navigate('Avatar', {
+      avatarId: user.profile.avatar ? user.profile.avatar.id : null,
+    });
+  };
+
   return (
     <KeyboardAvoidingView
       style={{ flex: 1 }}
@@ -104,12 +111,15 @@ const Profile = () => {
           </Header>
 
           <AvatarWrapper>
-            <TouchableOpacity onPress={() => {}}>
+            <TouchableOpacity onPress={handleNavigateToAvatar}>
               <UserAvatar
-                source={{
-                  uri:
-                    'https://ramcotubular.com/wp-content/uploads/default-avatar.jpg',
-                }}
+                source={
+                  user.profile.avatar
+                    ? {
+                        uri: user.profile.avatar.image_url,
+                      }
+                    : avatarDefaultImg
+                }
               />
             </TouchableOpacity>
 

@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import DashboardPage from '../pages/Dashboard';
 import Profile from '../pages/Profile';
+import Avatar from '../pages/Profile/Avatar';
 import NamingInstructions from '../pages/NamingInstructions';
 import Naming from '../pages/Naming';
 import NamingCompleted from '../pages/NamingCompleted';
@@ -21,6 +22,7 @@ const DashboardRoutes = () => (
   >
     <Dashboard.Screen name="Dashboard" component={DashboardPage} />
     <Dashboard.Screen name="Profile" component={Profile} />
+    <Dashboard.Screen name="Avatar" component={Avatar} />
     <Dashboard.Screen
       name="NamingInstructions"
       component={NamingInstructions}
