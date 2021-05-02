@@ -28,6 +28,7 @@
 		E7378AE7262CD86100F97F35 /* nomeie_palavras.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7378AE1262CD86100F97F35 /* nomeie_palavras.wav */; };
 		E7378AE8262CD86100F97F35 /* wrong.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7378AE2262CD86100F97F35 /* wrong.wav */; };
 		E7378AE9262CD86100F97F35 /* nomeie_figuras.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7378AE3262CD86100F97F35 /* nomeie_figuras.wav */; };
+		E74E37FD263E122F00F56A68 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74E37FC263E122F00F56A68 /* File.swift */; };
 		EDAF80D2FCBB45BEB36B5119 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4AA6CCA8252A4617B7988C4B /* Nunito-SemiBold.ttf */; };
 /* End PBXBuildFile section */
 
@@ -81,6 +82,8 @@
 		E7378AE1262CD86100F97F35 /* nomeie_palavras.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = nomeie_palavras.wav; path = ../android/app/src/main/res/raw/nomeie_palavras.wav; sourceTree = "<group>"; };
 		E7378AE2262CD86100F97F35 /* wrong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = wrong.wav; path = ../android/app/src/main/res/raw/wrong.wav; sourceTree = "<group>"; };
 		E7378AE3262CD86100F97F35 /* nomeie_figuras.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = nomeie_figuras.wav; path = ../android/app/src/main/res/raw/nomeie_figuras.wav; sourceTree = "<group>"; };
+		E74E37FB263E122F00F56A68 /* dislexiapp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "dislexiapp-Bridging-Header.h"; sourceTree = "<group>"; };
+		E74E37FC263E122F00F56A68 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		EB5503B921FB4F2EBE92C387 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-Regular.ttf"; path = "../assets/fonts/Nunito-Regular.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -187,6 +190,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				E74E37FC263E122F00F56A68 /* File.swift */,
 				E7378AE0262CD86100F97F35 /* completed.wav */,
 				E7378ADE262CD86100F97F35 /* correct.wav */,
 				E7378AE3262CD86100F97F35 /* nomeie_figuras.wav */,
@@ -200,6 +204,7 @@
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				590A5E1D39A54987B1CBC5C8 /* Resources */,
 				A204306B388DA8EEF3D86581 /* Pods */,
+				E74E37FB263E122F00F56A68 /* dislexiapp-Bridging-Header.h */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -244,6 +249,7 @@
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
 				3C8F93AA6EB59CA8712133B8 /* [CP] Copy Pods Resources */,
+				419AA87F56B6C615A63B7550 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -266,6 +272,7 @@
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				7A3A1F9522B5AAD6340A884A /* [CP] Copy Pods Resources */,
+				79A38DA4171BA16A9FF0C97B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -328,7 +335,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1250;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -528,6 +535,42 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-dislexiapp-dislexiappTests/Pods-dislexiapp-dislexiappTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		419AA87F56B6C615A63B7550 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-dislexiapp-dislexiappTests/Pods-dislexiapp-dislexiappTests-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL/OpenSSL.framework/OpenSSL",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-dislexiapp-dislexiappTests/Pods-dislexiapp-dislexiappTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		79A38DA4171BA16A9FF0C97B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-dislexiapp/Pods-dislexiapp-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL/OpenSSL.framework/OpenSSL",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-dislexiapp/Pods-dislexiapp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7A3A1F9522B5AAD6340A884A /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -676,6 +719,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				E74E37FD263E122F00F56A68 /* File.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -775,6 +819,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = dislexiapp;
+				SWIFT_OBJC_BRIDGING_HEADER = "dislexiapp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -797,6 +842,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = dislexiapp;
+				SWIFT_OBJC_BRIDGING_HEADER = "dislexiapp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
