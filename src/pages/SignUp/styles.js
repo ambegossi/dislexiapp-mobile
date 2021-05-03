@@ -5,15 +5,17 @@ import { getBottomSpace } from 'react-native-iphone-x-helper';
 import ButtonComponent from '../../components/Button';
 
 export const Container = styled(LinearGradient)`
+  padding: 0 30px;
+
   flex: 1;
   justify-content: center;
   align-items: center;
-  padding: 0 30px;
 `;
 
 export const TextToSpeechButtonContainer = styled.View`
   height: 28px;
   width: 100%;
+
   align-items: flex-start;
 `;
 

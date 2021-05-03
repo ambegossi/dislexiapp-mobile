@@ -2,7 +2,9 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Feather';
 
+import Ranking from './ranking.routes';
 import Dashboard from './dashboard.routes';
+import Settings from './settings.routes';
 
 const App = createBottomTabNavigator();
 
@@ -15,9 +17,13 @@ const AppRoutes = () => {
 
           if (route.name === 'Dashboard') {
             iconName = 'home';
+          } else if (route.name === 'Ranking') {
+            iconName = 'award';
+          } else if (route.name === 'Settings') {
+            iconName = 'settings';
           }
 
-          return <Icon name={iconName} size={32} color={color} />;
+          return <Icon name={iconName} size={34} color={color} />;
         },
       })}
       tabBarOptions={{
@@ -36,8 +42,11 @@ const AppRoutes = () => {
           height: 70,
         },
       }}
+      initialRouteName="Dashboard"
     >
+      <App.Screen name="Ranking" component={Ranking} />
       <App.Screen name="Dashboard" component={Dashboard} />
+      <App.Screen name="Settings" component={Settings} />
     </App.Navigator>
   );
 };
