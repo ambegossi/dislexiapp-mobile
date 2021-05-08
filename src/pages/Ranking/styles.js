@@ -16,6 +16,8 @@ export const Header = styled.View`
       : getStatusBarHeight()}px
     0 25px 0;
   width: 100%;
+  position: absolute;
+  top: 0;
 
   flex-direction: row;
   justify-content: space-between;
@@ -64,6 +66,7 @@ export const FirstUserName = styled.Text`
 `;
 
 export const RankingList = styled.FlatList`
+  margin-top: 130px;
   width: 100%;
 `;
 

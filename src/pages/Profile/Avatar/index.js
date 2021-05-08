@@ -13,6 +13,7 @@ import TextToSpeechButton from '../../../components/TextToSpeechButton';
 
 import { useAuth } from '../../../hooks/auth';
 import api from '../../../services/api';
+import { speech } from '../../../utils/voice';
 
 import bgImg from '../../../assets/images/bg.png';
 import avatarDefaultImg from '../../../assets/images/avatarDefault.png';
@@ -42,11 +43,13 @@ const Avatar = ({ route }) => {
 
       setAvatars(data);
     } catch (err) {
-      Alert.alert(
-        'Erro ao carregar os avatares',
+      const errorMessage =
         err.response?.data?.message ||
-          'Ocorreu um erro ao carregar os avatares, tente novamente.',
-      );
+        'Ocorreu um erro ao carregar os avatares, tente novamente.';
+
+      await speech(errorMessage);
+
+      Alert.alert('Ops...', errorMessage);
     }
   }, [avatarId]);
 
@@ -64,13 +67,21 @@ const Avatar = ({ route }) => {
 
       await updateUser(data);
 
-      Alert.alert('Avatar atualizado com sucesso!');
+      const successMessage = 'Avatar atualizado com sucesso!';
+
+      await speech(successMessage);
+
+      Alert.alert(successMessage);
+
+      navigation.goBack();
     } catch (err) {
-      Alert.alert(
-        'Erro ao salvar o avatar',
+      const errorMessage =
         err.response?.data?.message ||
-          'Ocorreu um erro ao salvar o avatar, tente novamente.',
-      );
+        'Ocorreu um erro ao salvar o avatar, tente novamente.';
+
+      await speech(errorMessage);
+
+      Alert.alert('Ops...', errorMessage);
     }
     setSubmitLoading(false);
   };

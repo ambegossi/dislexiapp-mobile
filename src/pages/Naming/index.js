@@ -17,6 +17,7 @@ import ProgressBar from '../../components/ProgressBar';
 import { useAuth } from '../../hooks/auth';
 import api from '../../services/api';
 import { playAudio } from '../../utils/audio';
+import { speech } from '../../utils/voice';
 
 import bgImg from '../../assets/images/bg.png';
 import audioWave from '../../assets/icons/audioWave.png';
@@ -86,11 +87,13 @@ const Naming = ({ route }) => {
 
       navigation.navigate('NARCompleted');
     } catch (err) {
-      Alert.alert(
-        'Erro ao concluir a nomeação',
+      const errorMessage =
         err.response?.data?.message ||
-          'Ocorreu um erro ao concluir a nomeação, tente novamente.',
-      );
+        'Ocorreu um erro ao concluir, tente novamente.';
+
+      await speech(errorMessage);
+
+      Alert.alert('Ops...', errorMessage);
     }
     setUpdateProfileLoading(false);
   };

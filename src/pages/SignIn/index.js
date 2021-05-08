@@ -17,6 +17,7 @@ import TextToSpeechButton from '../../components/TextToSpeechButton';
 
 import logoImg from '../../assets/images/logo.png';
 import { useAuth } from '../../hooks/auth';
+import { speech } from '../../utils/voice';
 
 import {
   Container,
@@ -52,11 +53,13 @@ const SignIn = () => {
     try {
       await signIn({ name: data.name, password: data.password });
     } catch (err) {
-      Alert.alert(
-        'Erro no cadastro',
+      const errorMessage =
         err.response?.data?.message ||
-          'Ocorreu um erro ao entrar, tente novamente.',
-      );
+        'Ocorreu um erro ao entrar, tente novamente.';
+
+      await speech(errorMessage);
+
+      Alert.alert('Ops...', errorMessage);
 
       setLoading(false);
     }

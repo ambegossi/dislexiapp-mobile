@@ -19,6 +19,7 @@ import ProgressBar from '../../components/ProgressBar';
 import { useAuth } from '../../hooks/auth';
 import api from '../../services/api';
 import capitalizeFirstLetter from '../../utils/capitalizeFirstLetter';
+import { speech } from '../../utils/voice';
 
 import bgImg from '../../assets/images/bg.png';
 import avatarDefaultImg from '../../assets/images/avatarDefault.png';
@@ -70,15 +71,21 @@ const Profile = () => {
 
       await updateUser(response.data);
 
-      Alert.alert('Perfil atualizado com sucesso!');
+      const successMessage = 'Perfil atualizado com sucesso!';
+
+      await speech(successMessage);
+
+      Alert.alert(successMessage);
 
       navigation.navigate('Dashboard');
     } catch (err) {
-      Alert.alert(
-        'Erro ao salvar o perfil',
+      const errorMessage =
         err.response?.data?.message ||
-          'Ocorreu um erro ao atualizar o perfil, tente novamente.',
-      );
+        'Ocorreu um erro ao atualizar o perfil, tente novamente.';
+
+      await speech(errorMessage);
+
+      Alert.alert('Ops...', errorMessage);
     }
     setLoading(false);
   };

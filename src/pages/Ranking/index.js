@@ -12,6 +12,7 @@ import TextToSpeechButton from '../../components/TextToSpeechButton';
 
 import api from '../../services/api';
 import capitalizeFirstLetter from '../../utils/capitalizeFirstLetter';
+import { speech } from '../../utils/voice';
 
 import bgImg from '../../assets/images/bg.png';
 import avatarDefaultImg from '../../assets/images/avatarDefault.png';
@@ -40,26 +41,36 @@ const Ranking = () => {
   const navigation = useNavigation();
 
   const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const loadUsersRanking = useCallback(async () => {
-    try {
-      const { data } = await api.get('/ranking', {
-        params: { number: 15 },
-      });
+  useFocusEffect(
+    useCallback(() => {
+      setUsers([]);
+      setLoading(true);
 
-      setUsers(data);
-    } catch (err) {
-      Alert.alert(
-        'Erro ao carregar o ranking',
-        err.response?.data?.message ||
-          'Ocorreu um erro ao carregar o ranking, tente novamente.',
-      );
-    }
-  }, []);
+      const loadRanking = async () => {
+        try {
+          const { data } = await api.get('/ranking', {
+            params: { number: 15 },
+          });
 
-  useFocusEffect(() => {
-    loadUsersRanking();
-  });
+          setUsers(data);
+        } catch (err) {
+          const errorMessage =
+            err.response?.data?.message ||
+            'Ocorreu um erro ao carregar o ranking, tente novamente.';
+
+          await speech(errorMessage);
+
+          Alert.alert('Ops...', errorMessage);
+        }
+
+        setLoading(false);
+      };
+
+      loadRanking();
+    }, []),
+  );
 
   return (
     <Container source={bgImg}>
@@ -77,9 +88,8 @@ const Ranking = () => {
         />
       </Header>
 
-      {users.length === 0 ? (
-        <ActivityIndicator color="#fff" size="large" />
-      ) : (
+      {!!loading && <ActivityIndicator color="#fff" size="large" />}
+      {!loading && users.length > 0 && (
         <>
           <RankingList
             data={users.slice(1)}

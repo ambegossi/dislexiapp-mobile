@@ -13,6 +13,7 @@ import moonRun from '../../assets/animations/moonRun.json';
 import { useAuth } from '../../hooks/auth';
 import api from '../../services/api';
 import { playAudio } from '../../utils/audio';
+import { speech } from '../../utils/voice';
 
 import { Container, Header, Text } from './styles';
 
@@ -38,11 +39,13 @@ const NamingInstructions = ({ route }) => {
         step: 1,
       });
     } catch (err) {
-      Alert.alert(
-        'Erro',
+      const errorMessage =
         err.response?.data?.message ||
-          'Ocorreu um erro ao começar, tente novamente.',
-      );
+        'Ocorreu um erro ao começar, tente novamente.';
+
+      await speech(errorMessage);
+
+      Alert.alert('Ops...', errorMessage);
     }
     setLoading(false);
   };
