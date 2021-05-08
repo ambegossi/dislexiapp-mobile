@@ -52,13 +52,13 @@ const NamingInstructions = ({ route }) => {
 
   const audioInstruction =
     namingType === 'words'
-      ? 'Toque no botão rosa para começar, e nomeie as palavras o mais rápido que conseguir!'
-      : 'Toque no botão rosa para começar, e nomeie as figuras o mais rápido que conseguir!';
+      ? 'Toque no botão rosa para começar, e tente ler as palavras o mais rápido que conseguir!'
+      : 'Toque no botão rosa para começar, e tente falar o que é cada figura que aparecer na tela, o mais rápido que conseguir!';
 
   const text =
     namingType === 'words'
-      ? 'Nomeie as palavras o mais rápido que conseguir!'
-      : 'Nomeie as figuras o mais rápido que conseguir!';
+      ? 'Tente ler as palavras o mais rápido que conseguir!'
+      : 'Tente falar o que é cada figura que aparecer na tela, o mais rápido que conseguir!';
 
   useEffect(() => {
     if (namingType === 'words') {
