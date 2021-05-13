@@ -17,6 +17,7 @@ import TextToSpeechButton from '../../components/TextToSpeechButton';
 
 import logoImg from '../../assets/images/logo.png';
 import { useAuth } from '../../hooks/auth';
+import { useSettings } from '../../hooks/settings';
 import { speech } from '../../utils/voice';
 
 import {
@@ -36,6 +37,7 @@ const schema = yup.object().shape({
 const SignIn = () => {
   const navigation = useNavigation();
   const { signIn } = useAuth();
+  const { updateSettings } = useSettings();
 
   const { control, handleSubmit, errors } = useForm({
     resolver: yupResolver(schema),
@@ -51,7 +53,11 @@ const SignIn = () => {
     setLoading(true);
 
     try {
-      await signIn({ name: data.name, password: data.password });
+      const user = await signIn({ name: data.name, password: data.password });
+
+      if (user.settings) {
+        await updateSettings(user.settings);
+      }
     } catch (err) {
       const errorMessage =
         err.response?.data?.message ||
@@ -140,7 +146,7 @@ const SignIn = () => {
       {!isKeyboardVisible && (
         <BackButton onPress={() => navigation.goBack()}>
           <Icon name="arrow-left" size={20} color="#fff" />
-          <BackButtonText>Voltar</BackButtonText>
+          <BackButtonText fontWeight="medium">Voltar</BackButtonText>
         </BackButton>
       )}
     </>

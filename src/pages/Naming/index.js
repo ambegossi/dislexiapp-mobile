@@ -15,6 +15,7 @@ import Button from '../../components/Button';
 import ProgressBar from '../../components/ProgressBar';
 
 import { useAuth } from '../../hooks/auth';
+import { useSettings } from '../../hooks/settings';
 import api from '../../services/api';
 import { playAudio } from '../../utils/audio';
 import { speech } from '../../utils/voice';
@@ -43,6 +44,7 @@ const Naming = ({ route }) => {
   const navigation = useNavigation();
 
   const { user, updateUser } = useAuth();
+  const { settings } = useSettings();
 
   const [currentStimulus, setCurrentStimulus] = useState(stimulusList[0]);
   const [currentStimulusListIndex, setCurrentStimulusListIndex] = useState(0);
@@ -91,7 +93,7 @@ const Naming = ({ route }) => {
         err.response?.data?.message ||
         'Ocorreu um erro ao concluir, tente novamente.';
 
-      await speech(errorMessage);
+      await speech(errorMessage, settings.speaking_rate);
 
       Alert.alert('Ops...', errorMessage);
     }
@@ -186,7 +188,7 @@ const Naming = ({ route }) => {
         await recorder.prepare();
         await recorder.record();
       } catch (err) {
-        console.error('erro recording', err);
+        console.error('error recording', err);
       }
     }
   };
@@ -272,7 +274,7 @@ const Naming = ({ route }) => {
           )}
           {namingType === 'words' ? (
             <WordContainer>
-              <Word>{currentStimulus.word}</Word>
+              <Word fontWeight="bold">{currentStimulus.word}</Word>
             </WordContainer>
           ) : (
             <Image

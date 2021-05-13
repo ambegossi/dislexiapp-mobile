@@ -2,10 +2,14 @@ import React, { forwardRef, useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { Controller } from 'react-hook-form';
 
+import { useSettings } from '../../hooks/settings';
+
 import { Container, TextInput, Icon, ErrorText } from './styles';
 
 const Input = forwardRef(
   ({ name, icon, control, errors, defaultValue, ...rest }, ref) => {
+    const { settings } = useSettings();
+
     const [isFocused, setIsFocused] = useState(false);
     const [isFilled, setIsFilled] = useState(false);
 
@@ -41,6 +45,11 @@ const Input = forwardRef(
                 onBlur={() => handleInputBlur(value)}
                 value={value}
                 ref={ref}
+                fontFamily={
+                  !!settings && settings.font_family
+                    ? settings.font_family
+                    : 'nunito'
+                }
                 {...rest}
               />
             </Container>
@@ -51,7 +60,9 @@ const Input = forwardRef(
             ref.current?.focus();
           }}
         />
-        {errors[name] && <ErrorText>{errors[name].message}</ErrorText>}
+        {errors[name] && (
+          <ErrorText fontWeight="medium">{errors[name].message}</ErrorText>
+        )}
       </>
     );
   },

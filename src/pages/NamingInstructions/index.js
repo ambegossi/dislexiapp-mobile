@@ -11,6 +11,7 @@ import Button from '../../components/Button';
 import bgImg from '../../assets/images/bg.png';
 import moonRun from '../../assets/animations/moonRun.json';
 import { useAuth } from '../../hooks/auth';
+import { useSettings } from '../../hooks/settings';
 import api from '../../services/api';
 import { playAudio } from '../../utils/audio';
 import { speech } from '../../utils/voice';
@@ -23,6 +24,7 @@ const NamingInstructions = ({ route }) => {
   const navigation = useNavigation();
 
   const { user } = useAuth();
+  const { settings } = useSettings();
 
   const [loading, setLoading] = useState(false);
 
@@ -43,7 +45,7 @@ const NamingInstructions = ({ route }) => {
         err.response?.data?.message ||
         'Ocorreu um erro ao começar, tente novamente.';
 
-      await speech(errorMessage);
+      await speech(errorMessage, settings.speaking_rate);
 
       Alert.alert('Ops...', errorMessage);
     }
@@ -88,7 +90,7 @@ const NamingInstructions = ({ route }) => {
 
         <LottieView source={moonRun} autoPlay loop style={{ width: 220 }} />
 
-        <Text>{text}</Text>
+        <Text fontWeight="medium">{text}</Text>
 
         <Button loading={loading} onPress={handleStart}>
           Começar

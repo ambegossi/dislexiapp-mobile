@@ -4,7 +4,7 @@ import createFile from './createFile';
 import ttsApi from '../services/ttsApi';
 import { playAudio } from './audio';
 
-export const speech = async text => {
+export const speech = async (text, speakingRate = 1) => {
   const path = `${RNFS.DocumentDirectoryPath}/voice.mp3`;
 
   const payload = {
@@ -18,6 +18,7 @@ export const speech = async text => {
     },
     audioConfig: {
       audioEncoding: 'MP3',
+      speakingRate: speakingRate || 1,
     },
   };
 

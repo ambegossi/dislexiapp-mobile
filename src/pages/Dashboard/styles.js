@@ -3,6 +3,8 @@ import { Platform } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 
+import Text from '../../components/Text';
+
 export const Header = styled.View`
   padding-top: ${Platform.OS === 'ios'
     ? getStatusBarHeight() + 40
@@ -21,10 +23,9 @@ export const ProfileContainer = styled.View`
   align-items: center;
 `;
 
-export const UserName = styled.Text`
+export const UserName = styled(Text)`
   color: #fff;
   font-size: 24px;
-  font-family: 'Nunito-SemiBold';
   margin-right: 15px;
 `;
 
@@ -65,8 +66,7 @@ export const NamingBottomContainer = styled.View`
   align-items: center;
 `;
 
-export const NamingTitle = styled.Text`
+export const NamingTitle = styled(Text)`
   color: #fff;
   font-size: 20px;
-  font-family: 'Nunito-SemiBold';
 `;

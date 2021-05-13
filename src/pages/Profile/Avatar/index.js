@@ -12,6 +12,7 @@ import PropTypes from 'prop-types';
 import TextToSpeechButton from '../../../components/TextToSpeechButton';
 
 import { useAuth } from '../../../hooks/auth';
+import { useSettings } from '../../../hooks/settings';
 import api from '../../../services/api';
 import { speech } from '../../../utils/voice';
 
@@ -26,6 +27,7 @@ const Avatar = ({ route }) => {
   const navigation = useNavigation();
 
   const { updateUser } = useAuth();
+  const { settings } = useSettings();
 
   const [avatars, setAvatars] = useState([]);
   const [currentAvatarIndex, setCurrentAvatarIndex] = useState(0);
@@ -47,11 +49,11 @@ const Avatar = ({ route }) => {
         err.response?.data?.message ||
         'Ocorreu um erro ao carregar os avatares, tente novamente.';
 
-      await speech(errorMessage);
+      await speech(errorMessage, settings.speaking_rate);
 
       Alert.alert('Ops...', errorMessage);
     }
-  }, [avatarId]);
+  }, [avatarId, settings.speaking_rate]);
 
   useEffect(() => {
     loadAvatars();
@@ -69,7 +71,7 @@ const Avatar = ({ route }) => {
 
       const successMessage = 'Avatar atualizado com sucesso!';
 
-      await speech(successMessage);
+      await speech(successMessage, settings.speaking_rate);
 
       Alert.alert(successMessage);
 
@@ -79,7 +81,7 @@ const Avatar = ({ route }) => {
         err.response?.data?.message ||
         'Ocorreu um erro ao salvar o avatar, tente novamente.';
 
-      await speech(errorMessage);
+      await speech(errorMessage, settings.speaking_rate);
 
       Alert.alert('Ops...', errorMessage);
     }

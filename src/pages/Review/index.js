@@ -9,6 +9,7 @@ import ProgressBar from '../../components/ProgressBar';
 
 import { playAudio } from '../../utils/audio';
 import { speech } from '../../utils/voice';
+import { useSettings } from '../../hooks/settings';
 
 import bgImg from '../../assets/images/bg.png';
 
@@ -27,6 +28,8 @@ const Review = ({ route }) => {
   const { stimulusList, namingType, results } = route.params;
 
   const navigation = useNavigation();
+
+  const { settings } = useSettings();
 
   const [currentStimulus, setCurrentStimulus] = useState(stimulusList[0]);
   const [currentResult, setCurrentResult] = useState(results[0]);
@@ -60,7 +63,7 @@ const Review = ({ route }) => {
   const handleSpeech = async () => {
     setSpeechLoading(true);
 
-    await speech(currentStimulus.word);
+    await speech(currentStimulus.word, settings.speaking_rate);
 
     setSpeechLoading(false);
   };
@@ -95,7 +98,7 @@ const Review = ({ route }) => {
           />
 
           <WordContainer>
-            <Word>{currentStimulus.word}</Word>
+            <Word fontWeight="bold">{currentStimulus.word}</Word>
           </WordContainer>
 
           <SoundButton onPress={handleSpeech}>

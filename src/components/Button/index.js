@@ -11,7 +11,7 @@ const Button = ({ children, loading, icon, ...rest }) => {
         <ActivityIndicator size="small" color="#fff" />
       ) : (
         <>
-          <ButtonText>{children}</ButtonText>
+          <ButtonText fontWeight="medium">{children}</ButtonText>
 
           {!!icon && icon}
         </>

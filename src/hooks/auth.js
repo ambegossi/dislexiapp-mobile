@@ -43,14 +43,23 @@ const AuthProvider = ({ children }) => {
 
     const { token, user } = response.data;
 
+    const userWithoutSettings = {
+      id: user.id,
+      name: user.name,
+      profile_id: user.profile_id,
+      profile: user.profile,
+    };
+
     await AsyncStorage.multiSet([
       ['@DislexiApp:token', token],
-      ['@DislexiApp:user', JSON.stringify(user)],
+      ['@DislexiApp:user', JSON.stringify(userWithoutSettings)],
     ]);
 
     api.defaults.headers.authorization = `Bearer ${token}`;
 
-    setData({ token, user });
+    setData({ token, user: userWithoutSettings });
+
+    return user;
   }, []);
 
   const signOut = useCallback(async () => {

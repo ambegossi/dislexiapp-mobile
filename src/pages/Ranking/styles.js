@@ -2,6 +2,8 @@ import styled from 'styled-components/native';
 import { Platform } from 'react-native';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 
+import Text from '../../components/Text';
+
 export const Container = styled.ImageBackground`
   flex: 1;
   padding: 0 30px 90px 30px;
@@ -58,10 +60,9 @@ export const UserAvatar = styled.Image`
   margin: 0 15px;
 `;
 
-export const FirstUserName = styled.Text`
+export const FirstUserName = styled(Text)`
   color: #fff;
   font-size: 24px;
-  font-family: 'Nunito-Bold';
   margin-right: 15px;
 `;
 
@@ -81,17 +82,15 @@ export const RankingUserPositionContainer = styled.View`
   flex-direction: row;
 `;
 
-export const RankingUserPosition = styled.Text`
+export const RankingUserPosition = styled(Text)`
   color: #fff;
   font-size: 18px;
-  font-family: 'Nunito-Bold';
   margin-right: 7px;
 `;
 
-export const RankingUserName = styled.Text`
+export const RankingUserName = styled(Text)`
   color: #fff;
   font-size: 18px;
-  font-family: 'Nunito-SemiBold';
 `;
 
 export const ShieldImage = styled.ImageBackground`
@@ -110,8 +109,7 @@ export const ShieldLevelContainer = styled.View`
   align-items: center;
 `;
 
-export const ShieldLevel = styled.Text`
+export const ShieldLevel = styled(Text)`
   color: #fff;
   font-size: 18px;
-  font-family: 'Nunito-SemiBold';
 `;

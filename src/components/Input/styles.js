@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components/native';
-
 import FeatherIcon from 'react-native-vector-icons/Feather';
+
+import Text from '../Text';
 
 export const Container = styled.View`
   width: 100%;
@@ -32,17 +33,35 @@ export const TextInput = styled.TextInput`
   flex: 1;
   color: #fff;
   font-size: 16px;
-  font-family: 'Nunito-Regular';
+  font-family: 'Nunito-SemiBold';
+
+  ${props =>
+    props.fontFamily === 'nunito' &&
+    css`
+      font-family: 'Nunito-SemiBold';
+    `}
+
+  ${props =>
+    props.fontFamily === 'roboto' &&
+    css`
+      font-family: 'Roboto-Medium';
+    `}
+
+
+  ${props =>
+    props.fontFamily === 'ubuntu' &&
+    css`
+      font-family: 'Ubuntu-Medium';
+    `}
 `;
 
 export const Icon = styled(FeatherIcon)`
   margin-right: 15px;
 `;
 
-export const ErrorText = styled.Text`
+export const ErrorText = styled(Text)`
   color: #c53030;
   font-size: 14px;
-  font-family: 'Nunito-Regular';
   margin-bottom: 8px;
 
   align-self: flex-start;

@@ -2,6 +2,8 @@ import styled from 'styled-components/native';
 import { Platform } from 'react-native';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 
+import Text from '../../components/Text';
+
 export const Container = styled.ImageBackground`
   flex: 1;
   padding: 0 30px 120px 30px;
@@ -56,10 +58,9 @@ export const WordContainer = styled.View`
   align-items: center;
 `;
 
-export const Word = styled.Text`
+export const Word = styled(Text)`
   color: #fff;
   font-size: 36px;
-  font-family: 'Nunito-Bold';
   text-transform: capitalize;
 `;
 

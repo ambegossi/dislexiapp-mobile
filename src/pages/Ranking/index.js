@@ -13,6 +13,7 @@ import TextToSpeechButton from '../../components/TextToSpeechButton';
 import api from '../../services/api';
 import capitalizeFirstLetter from '../../utils/capitalizeFirstLetter';
 import { speech } from '../../utils/voice';
+import { useSettings } from '../../hooks/settings';
 
 import bgImg from '../../assets/images/bg.png';
 import avatarDefaultImg from '../../assets/images/avatarDefault.png';
@@ -40,6 +41,8 @@ import {
 const Ranking = () => {
   const navigation = useNavigation();
 
+  const { settings } = useSettings();
+
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -60,7 +63,7 @@ const Ranking = () => {
             err.response?.data?.message ||
             'Ocorreu um erro ao carregar o ranking, tente novamente.';
 
-          await speech(errorMessage);
+          await speech(errorMessage, settings.speaking_rate);
 
           Alert.alert('Ops...', errorMessage);
         }
@@ -69,7 +72,7 @@ const Ranking = () => {
       };
 
       loadRanking();
-    }, []),
+    }, [settings.speaking_rate]),
   );
 
   return (
@@ -110,12 +113,14 @@ const Ranking = () => {
                   />
                 </FirstUserAvatarContainer>
                 <FirstUserNameContainer>
-                  <FirstUserName>
-                    1º {capitalizeFirstLetter(users[0].name)}
+                  <FirstUserName fontWeight="bold">
+                    {`1º ${capitalizeFirstLetter(users[0].name)}`}
                   </FirstUserName>
                   <ShieldImage source={shieldImg} size={30}>
                     <ShieldLevelContainer>
-                      <ShieldLevel>{users[0].profile.level}</ShieldLevel>
+                      <ShieldLevel fontWeight="medium">
+                        {users[0].profile.level.toString()}
+                      </ShieldLevel>
                     </ShieldLevelContainer>
                   </ShieldImage>
                 </FirstUserNameContainer>
@@ -124,15 +129,19 @@ const Ranking = () => {
             renderItem={({ item: user, index }) => (
               <RankingRowContainer>
                 <RankingUserPositionContainer>
-                  <RankingUserPosition>{index + 2}º</RankingUserPosition>
-                  <RankingUserName>
+                  <RankingUserPosition fontWeight="bold">
+                    {`${(index + 2).toString()}º`}
+                  </RankingUserPosition>
+                  <RankingUserName fontWeight="medium">
                     {capitalizeFirstLetter(user.name)}
                   </RankingUserName>
                 </RankingUserPositionContainer>
 
                 <ShieldImage source={shieldImg} size={25}>
                   <ShieldLevelContainer>
-                    <ShieldLevel>{user.profile.level}</ShieldLevel>
+                    <ShieldLevel fontWeight="medium">
+                      {user.profile.level.toString()}
+                    </ShieldLevel>
                   </ShieldLevelContainer>
                 </ShieldImage>
               </RankingRowContainer>

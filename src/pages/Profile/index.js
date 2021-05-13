@@ -17,6 +17,7 @@ import TextToSpeechButton from '../../components/TextToSpeechButton';
 import ProgressBar from '../../components/ProgressBar';
 
 import { useAuth } from '../../hooks/auth';
+import { useSettings } from '../../hooks/settings';
 import api from '../../services/api';
 import capitalizeFirstLetter from '../../utils/capitalizeFirstLetter';
 import { speech } from '../../utils/voice';
@@ -50,8 +51,10 @@ const Profile = () => {
   const navigation = useNavigation();
 
   const { user, updateUser, signOut } = useAuth();
+  const { settings, removeSettings } = useSettings();
 
   const [loading, setLoading] = useState(false);
+  const [signOutLoading, setSignOutLoading] = useState(false);
 
   const { control, handleSubmit, errors } = useForm({
     resolver: yupResolver(schema),
@@ -73,7 +76,7 @@ const Profile = () => {
 
       const successMessage = 'Perfil atualizado com sucesso!';
 
-      await speech(successMessage);
+      await speech(successMessage, settings.speaking_rate);
 
       Alert.alert(successMessage);
 
@@ -83,7 +86,7 @@ const Profile = () => {
         err.response?.data?.message ||
         'Ocorreu um erro ao atualizar o perfil, tente novamente.';
 
-      await speech(errorMessage);
+      await speech(errorMessage, settings.speaking_rate);
 
       Alert.alert('Ops...', errorMessage);
     }
@@ -94,6 +97,14 @@ const Profile = () => {
     navigation.navigate('Avatar', {
       avatarId: user.profile.avatar ? user.profile.avatar.id : null,
     });
+  };
+
+  const handleSignOut = async () => {
+    setSignOutLoading(true);
+
+    await removeSettings();
+
+    await signOut();
   };
 
   return (
@@ -132,7 +143,7 @@ const Profile = () => {
 
             <ProgressBar progress={user.profile.score % 30} total={30} />
 
-            <Level>{user.profile.level.toString()}</Level>
+            <Level fontWeight="bold">{user.profile.level.toString()}</Level>
           </AvatarWrapper>
 
           <Input
@@ -178,7 +189,9 @@ const Profile = () => {
             textContentType="newPassword"
           />
 
-          <SignOutButton onPress={signOut}>Sair</SignOutButton>
+          <SignOutButton loading={signOutLoading} onPress={handleSignOut}>
+            Sair
+          </SignOutButton>
 
           <Button loading={loading} onPress={handleSubmit(onSubmit)}>
             Salvar

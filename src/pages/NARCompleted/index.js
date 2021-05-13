@@ -45,7 +45,7 @@ const NARCompleted = () => {
           speed={0.8}
         />
 
-        <Text>Mandou bem!</Text>
+        <Text fontWeight="bold">Mandou bem!</Text>
 
         <Button onPress={handleDashboard}>Ok</Button>
       </Container>

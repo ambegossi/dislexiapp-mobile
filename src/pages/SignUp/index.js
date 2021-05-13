@@ -170,7 +170,7 @@ const SignUp = () => {
       {!isKeyboardVisible && (
         <BackButton onPress={() => navigation.goBack()}>
           <Icon name="arrow-left" size={20} color="#fff" />
-          <BackButtonText>Voltar</BackButtonText>
+          <BackButtonText fontWeight="medium">Voltar</BackButtonText>
         </BackButton>
       )}
     </>

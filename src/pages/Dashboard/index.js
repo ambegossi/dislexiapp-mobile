@@ -61,7 +61,9 @@ const Dashboard = () => {
           />
 
           <ProfileContainer>
-            <UserName>{capitalizeFirstLetter(user.name)}</UserName>
+            <UserName fontWeight="medium">
+              {capitalizeFirstLetter(user.name)}
+            </UserName>
             <TouchableOpacity onPress={navigateToProfile}>
               <UserAvatar
                 source={
@@ -85,7 +87,7 @@ const Dashboard = () => {
             <NamingImage source={writingImg} />
           </NamingImageWrapper>
           <NamingBottomContainer>
-            <NamingTitle>Palavras</NamingTitle>
+            <NamingTitle fontWeight="medium">Palavras</NamingTitle>
           </NamingBottomContainer>
         </NamingButton>
 
@@ -98,7 +100,7 @@ const Dashboard = () => {
             <NamingImage source={astronautImg} />
           </NamingImageWrapper>
           <NamingBottomContainer>
-            <NamingTitle>Figuras</NamingTitle>
+            <NamingTitle fontWeight="medium">Figuras</NamingTitle>
           </NamingBottomContainer>
         </NamingButton>
       </ScrollView>

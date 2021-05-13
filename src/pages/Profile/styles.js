@@ -3,6 +3,7 @@ import { Platform } from 'react-native';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 
 import ButtonComponent from '../../components/Button';
+import Text from '../../components/Text';
 
 export const Container = styled.ImageBackground`
   flex: 1;
@@ -40,10 +41,9 @@ export const UserAvatar = styled.Image`
   margin-right: 20px;
 `;
 
-export const Level = styled.Text`
+export const Level = styled(Text)`
   color: #fff;
   font-size: 18px;
-  font-family: 'Nunito-Bold';
   margin-left: 10px;
 `;
 

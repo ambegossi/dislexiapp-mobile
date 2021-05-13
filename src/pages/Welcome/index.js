@@ -33,7 +33,7 @@ const Welcome = () => {
         <Button onPress={() => navigation.navigate('SignUp')}>Cadastrar</Button>
       </Container>
       <SignInButton onPress={() => navigation.navigate('SignIn')}>
-        <SignInButtonText>Entrar</SignInButtonText>
+        <SignInButtonText fontWeight="medium">Entrar</SignInButtonText>
       </SignInButton>
     </>
   );
