@@ -8,7 +8,7 @@
     <item name="android:statusBarColor">@color/app_bg</item>
     <!-- Add the following line to set the default status bar text color for all the app
     to be a light color (false) or a dark color (true) -->
-    <item name="android:windowLightStatusBar">true</item>
+    <item name="android:windowLightStatusBar">false</item>
     <!-- Add the following line to set the default background color for all the app. -->
     <item name="android:windowBackground">@color/app_bg</item>
   </style>
