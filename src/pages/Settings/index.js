@@ -15,6 +15,7 @@ import orangeAstronautImg from '../../assets/images/orangeAstronaut.png';
 import darkAstronautImg from '../../assets/images/darkAstronaut.png';
 
 import {
+  Background,
   Container,
   Header,
   Title,
@@ -110,7 +111,7 @@ const Settings = () => {
     setCurrentSpeakingRateIndex(currentSpeakingRateIndex - 1);
   };
 
-  const handleDeleteAccount = async () => {
+  const deleteAccount = async () => {
     setDeleteAccountLoading(true);
     try {
       await api.delete('/users');
@@ -129,120 +130,135 @@ const Settings = () => {
     }
   };
 
+  const handleDeleteAccount = async () => {
+    await speech(
+      'Você tem certeza que deseja excluir sua conta?',
+      settings.speaking_rate,
+    );
+
+    Alert.alert(
+      'Atenção!',
+      'Você tem certeza que deseja excluir sua conta?',
+      [
+        {
+          text: 'Não',
+          onPress: () => {},
+          style: 'cancel',
+        },
+        { text: 'Sim', onPress: () => deleteAccount() },
+      ],
+      {
+        cancelable: true,
+      },
+    );
+  };
+
   return (
-    <ScrollView
-      keyboardShouldPersistTaps="handled"
-      style={{ flex: 1 }}
-      contentContainerStyle={{
-        flex: 1,
-      }}
-    >
-      <Container source={bgImg}>
-        <Header>
-          <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Icon name="arrow-left-circle" size={32} color="#fff" />
-          </TouchableOpacity>
+    <Background source={bgImg}>
+      <ScrollView>
+        <Container>
+          <Header>
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+              <Icon name="arrow-left-circle" size={32} color="#fff" />
+            </TouchableOpacity>
 
-          <TextToSpeechButton text="Nesta tela você pode escolher a fonte dos textos do aplicativo, a velocidade das instruções por áudio, como essa, e escolher a privacidade do seu perfil. Se você escolher um perfil privado, você não irá aparecer no ranking." />
-        </Header>
+            <TextToSpeechButton text="Nesta tela você pode escolher a fonte dos textos do aplicativo, a velocidade das instruções por áudio, como essa, e escolher a privacidade do seu perfil. Se você escolher um perfil privado, você não irá aparecer no ranking." />
+          </Header>
 
-        <Title fontWeight="bold">Fonte</Title>
-        <FontContainer>
-          <TouchableOpacity
-            onPress={handlePrevFont}
-            disabled={!(currentFontIndex > 0)}
+          <Title fontWeight="medium">Fonte</Title>
+          <FontContainer>
+            <TouchableOpacity
+              onPress={handlePrevFont}
+              disabled={!(currentFontIndex > 0)}
+            >
+              <Icon
+                name="chevron-left"
+                size={40}
+                color={currentFontIndex > 0 ? '#fff' : '#adadad'}
+              />
+            </TouchableOpacity>
+
+            <FontExampleText font={fonts[currentFontIndex]}>
+              {fonts[currentFontIndex].toString()}
+            </FontExampleText>
+
+            <TouchableOpacity
+              onPress={handleNextFont}
+              disabled={!(currentFontIndex < fonts.length - 1)}
+            >
+              <Icon
+                name="chevron-right"
+                size={40}
+                color={currentFontIndex < fonts.length - 1 ? '#fff' : '#adadad'}
+              />
+            </TouchableOpacity>
+          </FontContainer>
+
+          <Title fontWeight="medium">Velocidade dos áudios</Title>
+          <SpeakingRateContainer>
+            <TouchableOpacity
+              onPress={handlePrevSpeakingRate}
+              disabled={!(currentSpeakingRateIndex > 0)}
+            >
+              <Icon
+                name="chevron-left"
+                size={40}
+                color={currentSpeakingRateIndex > 0 ? '#fff' : '#adadad'}
+              />
+            </TouchableOpacity>
+
+            <SpeakingRateText>
+              {speakingRates[currentSpeakingRateIndex].toString()}
+            </SpeakingRateText>
+
+            <TouchableOpacity
+              onPress={handleNextSpeakingRate}
+              disabled={!(currentSpeakingRateIndex < speakingRates.length - 1)}
+            >
+              <Icon
+                name="chevron-right"
+                size={40}
+                color={
+                  currentSpeakingRateIndex < speakingRates.length - 1
+                    ? '#fff'
+                    : '#adadad'
+                }
+              />
+            </TouchableOpacity>
+          </SpeakingRateContainer>
+
+          <Title fontWeight="medium">Privacidade do perfil</Title>
+          <ProfilePrivacyContainer>
+            <ProfilePrivacyButton
+              onPress={() => setProfilePrivacy('public')}
+              selected={profilePrivacy === 'public'}
+            >
+              <Image source={orangeAstronautImg} />
+
+              <ProfilePrivacyButtonText>Público</ProfilePrivacyButtonText>
+            </ProfilePrivacyButton>
+            <ProfilePrivacyButton
+              onPress={() => setProfilePrivacy('private')}
+              selected={profilePrivacy === 'private'}
+            >
+              <Image source={darkAstronautImg} />
+
+              <ProfilePrivacyButtonText>Privado</ProfilePrivacyButtonText>
+            </ProfilePrivacyButton>
+          </ProfilePrivacyContainer>
+
+          <DeleteAccountButton
+            loading={deleteAccountLoading}
+            onPress={handleDeleteAccount}
           >
-            <Icon
-              name="chevron-left"
-              size={40}
-              color={currentFontIndex > 0 ? '#fff' : '#adadad'}
-            />
-          </TouchableOpacity>
-
-          <FontExampleText font={fonts[currentFontIndex]}>
-            {fonts[currentFontIndex].toString()}
-          </FontExampleText>
-
-          <TouchableOpacity
-            onPress={handleNextFont}
-            disabled={!(currentFontIndex < fonts.length - 1)}
-          >
-            <Icon
-              name="chevron-right"
-              size={40}
-              color={currentFontIndex < fonts.length - 1 ? '#fff' : '#adadad'}
-            />
-          </TouchableOpacity>
-        </FontContainer>
-
-        <Title fontWeight="bold">Velocidade dos áudios</Title>
-        <SpeakingRateContainer>
-          <TouchableOpacity
-            onPress={handlePrevSpeakingRate}
-            disabled={!(currentSpeakingRateIndex > 0)}
-          >
-            <Icon
-              name="chevron-left"
-              size={40}
-              color={currentSpeakingRateIndex > 0 ? '#fff' : '#adadad'}
-            />
-          </TouchableOpacity>
-
-          <SpeakingRateText fontWeight="medium">
-            {speakingRates[currentSpeakingRateIndex].toString()}
-          </SpeakingRateText>
-
-          <TouchableOpacity
-            onPress={handleNextSpeakingRate}
-            disabled={!(currentSpeakingRateIndex < speakingRates.length - 1)}
-          >
-            <Icon
-              name="chevron-right"
-              size={40}
-              color={
-                currentSpeakingRateIndex < speakingRates.length - 1
-                  ? '#fff'
-                  : '#adadad'
-              }
-            />
-          </TouchableOpacity>
-        </SpeakingRateContainer>
-
-        <Title fontWeight="bold">Privacidade do perfil</Title>
-        <ProfilePrivacyContainer>
-          <ProfilePrivacyButton
-            onPress={() => setProfilePrivacy('public')}
-            selected={profilePrivacy === 'public'}
-          >
-            <Image source={orangeAstronautImg} />
-
-            <ProfilePrivacyButtonText fontWeight="bold">
-              Público
-            </ProfilePrivacyButtonText>
-          </ProfilePrivacyButton>
-          <ProfilePrivacyButton
-            onPress={() => setProfilePrivacy('private')}
-            selected={profilePrivacy === 'private'}
-          >
-            <Image source={darkAstronautImg} />
-
-            <ProfilePrivacyButtonText fontWeight="bold">
-              Privado
-            </ProfilePrivacyButtonText>
-          </ProfilePrivacyButton>
-        </ProfilePrivacyContainer>
-
-        <DeleteAccountButton
-          loading={deleteAccountLoading}
-          onPress={handleDeleteAccount}
-        >
-          Excluir conta
-        </DeleteAccountButton>
-        <Button loading={submitLoading} onPress={handleSubmit}>
-          Salvar
-        </Button>
-      </Container>
-    </ScrollView>
+            Excluir conta
+          </DeleteAccountButton>
+          <Button loading={submitLoading} onPress={handleSubmit}>
+            Salvar
+          </Button>
+        </Container>
+      </ScrollView>
+    </Background>
   );
 };
 

@@ -16,7 +16,7 @@ import api from '../../services/api';
 import { playAudio } from '../../utils/audio';
 import { speech } from '../../utils/voice';
 
-import { Container, Header, Text } from './styles';
+import { Background, Header, Text } from './styles';
 
 const NamingInstructions = ({ route }) => {
   const { namingType } = route.params;
@@ -79,7 +79,7 @@ const NamingInstructions = ({ route }) => {
         flex: 1,
       }}
     >
-      <Container source={bgImg}>
+      <Background source={bgImg}>
         <Header>
           <TouchableOpacity onPress={() => navigation.goBack()}>
             <Icon name="arrow-left-circle" size={32} color="#fff" />
@@ -95,7 +95,7 @@ const NamingInstructions = ({ route }) => {
         <Button loading={loading} onPress={handleStart}>
           Começar
         </Button>
-      </Container>
+      </Background>
     </ScrollView>
   );
 };

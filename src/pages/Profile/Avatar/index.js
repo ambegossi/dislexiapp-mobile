@@ -19,7 +19,14 @@ import { speech } from '../../../utils/voice';
 import bgImg from '../../../assets/images/bg.png';
 import avatarDefaultImg from '../../../assets/images/avatarDefault.png';
 
-import { Container, Header, AvatarWrapper, UserAvatar, Button } from './styles';
+import {
+  Background,
+  Container,
+  Header,
+  AvatarWrapper,
+  UserAvatar,
+  Button,
+} from './styles';
 
 const Avatar = ({ route }) => {
   const { avatarId } = route.params;
@@ -97,66 +104,63 @@ const Avatar = ({ route }) => {
   };
 
   return (
-    <ScrollView
-      keyboardShouldPersistTaps="handled"
-      contentContainerStyle={{
-        flex: 1,
-      }}
-    >
-      <Container source={bgImg}>
-        <Header>
-          <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Icon name="arrow-left-circle" size={32} color="#fff" />
-          </TouchableOpacity>
-
-          <TextToSpeechButton text="Escolha seu avatar, e toque no botão rosa para salvar." />
-        </Header>
-
-        {avatars.length === 0 ? (
-          <ActivityIndicator color="#fff" size="large" />
-        ) : (
-          <AvatarWrapper>
-            <TouchableOpacity
-              onPress={handlePrevAvatar}
-              disabled={!(currentAvatarIndex >= 0)}
-            >
-              <Icon
-                name="chevron-left"
-                size={56}
-                color={currentAvatarIndex >= 0 ? '#fff' : '#adadad'}
-              />
+    <Background source={bgImg}>
+      <ScrollView style={{ flex: 1 }} contentContainerStyle={{ flex: 1 }}>
+        <Container>
+          <Header>
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+              <Icon name="arrow-left-circle" size={32} color="#fff" />
             </TouchableOpacity>
 
-            <UserAvatar
-              source={
-                currentAvatarIndex === -1
-                  ? avatarDefaultImg
-                  : {
-                      uri: avatars[currentAvatarIndex].image_url,
-                    }
-              }
-            />
+            <TextToSpeechButton text="Escolha seu avatar, e toque no botão rosa para salvar." />
+          </Header>
 
-            <TouchableOpacity
-              onPress={handleNextAvatar}
-              disabled={!(currentAvatarIndex < avatars.length - 1)}
-            >
-              <Icon
-                name="chevron-right"
-                size={56}
-                color={
-                  currentAvatarIndex < avatars.length - 1 ? '#fff' : '#adadad'
+          {avatars.length === 0 ? (
+            <ActivityIndicator color="#fff" size="large" />
+          ) : (
+            <AvatarWrapper>
+              <TouchableOpacity
+                onPress={handlePrevAvatar}
+                disabled={!(currentAvatarIndex >= 0)}
+              >
+                <Icon
+                  name="chevron-left"
+                  size={56}
+                  color={currentAvatarIndex >= 0 ? '#fff' : '#adadad'}
+                />
+              </TouchableOpacity>
+
+              <UserAvatar
+                source={
+                  currentAvatarIndex === -1
+                    ? avatarDefaultImg
+                    : {
+                        uri: avatars[currentAvatarIndex].image_url,
+                      }
                 }
               />
-            </TouchableOpacity>
-          </AvatarWrapper>
-        )}
 
-        <Button loading={submitLoading} onPress={handleSubmit}>
-          Salvar
-        </Button>
-      </Container>
-    </ScrollView>
+              <TouchableOpacity
+                onPress={handleNextAvatar}
+                disabled={!(currentAvatarIndex < avatars.length - 1)}
+              >
+                <Icon
+                  name="chevron-right"
+                  size={56}
+                  color={
+                    currentAvatarIndex < avatars.length - 1 ? '#fff' : '#adadad'
+                  }
+                />
+              </TouchableOpacity>
+            </AvatarWrapper>
+          )}
+
+          <Button loading={submitLoading} onPress={handleSubmit}>
+            Salvar
+          </Button>
+        </Container>
+      </ScrollView>
+    </Background>
   );
 };
 

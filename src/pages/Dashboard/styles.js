@@ -38,7 +38,7 @@ export const UserAvatar = styled.Image`
 `;
 
 export const NamingButton = styled.TouchableOpacity`
-  margin-bottom: 35px;
+  margin-bottom: 25px;
 `;
 
 export const NamingImageWrapper = styled(LinearGradient)`

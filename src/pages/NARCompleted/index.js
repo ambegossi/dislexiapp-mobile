@@ -11,7 +11,7 @@ import { playAudio } from '../../utils/audio';
 import bgImg from '../../assets/images/bg.png';
 import medal from '../../assets/animations/medal.json';
 
-import { Container, Header, Text } from './styles';
+import { Background, Header, Text } from './styles';
 
 const NARCompleted = () => {
   const navigation = useNavigation();
@@ -32,7 +32,7 @@ const NARCompleted = () => {
         flex: 1,
       }}
     >
-      <Container source={bgImg}>
+      <Background source={bgImg}>
         <Header>
           <ProgressBar progress={5} width={170} total={5} />
         </Header>
@@ -45,10 +45,10 @@ const NARCompleted = () => {
           speed={0.8}
         />
 
-        <Text fontWeight="bold">Mandou bem!</Text>
+        <Text fontWeight="medium">Mandou bem!</Text>
 
         <Button onPress={handleDashboard}>Ok</Button>
-      </Container>
+      </Background>
     </ScrollView>
   );
 };

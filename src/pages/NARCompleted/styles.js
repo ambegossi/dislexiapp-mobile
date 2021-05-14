@@ -4,9 +4,9 @@ import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 
 import TextComponent from '../../components/Text';
 
-export const Container = styled.ImageBackground`
+export const Background = styled.ImageBackground`
   flex: 1;
-  padding: 0 30px 90px 30px;
+  padding: 0 30px 70px 30px;
 
   justify-content: center;
   align-items: center;
@@ -25,7 +25,7 @@ export const Header = styled.View`
 
 export const Text = styled(TextComponent)`
   color: #fff;
-  font-size: 36px;
-  margin-top: 20px;
+  font-size: 32px;
+  margin-top: 15px;
   margin-bottom: 30px;
 `;

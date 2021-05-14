@@ -14,7 +14,7 @@ import { useSettings } from '../../hooks/settings';
 import bgImg from '../../assets/images/bg.png';
 
 import {
-  Container,
+  Background,
   Header,
   Wrapper,
   ResultIcon,
@@ -76,7 +76,7 @@ const Review = ({ route }) => {
         flex: 1,
       }}
     >
-      <Container source={bgImg}>
+      <Background source={bgImg}>
         <Header>
           <ProgressBar progress={progress} width={170} total={2} />
         </Header>
@@ -116,7 +116,7 @@ const Review = ({ route }) => {
         >
           Avançar
         </Button>
-      </Container>
+      </Background>
     </ScrollView>
   );
 };

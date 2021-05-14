@@ -1,4 +1,5 @@
 import React from 'react';
+import { Platform } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Feather';
 
@@ -9,6 +10,8 @@ import Settings from './settings.routes';
 const App = createBottomTabNavigator();
 
 const AppRoutes = () => {
+  const tabBarHeight = Platform.OS === 'android' ? 65 : 70;
+
   return (
     <App.Navigator
       screenOptions={({ route }) => ({
@@ -32,14 +35,14 @@ const AppRoutes = () => {
         keyboardHidesTabBar: true,
         showLabel: false,
         tabStyle: {
-          height: 70,
+          height: tabBarHeight,
         },
         style: {
           borderTopLeftRadius: 25,
           borderTopRightRadius: 25,
           borderTopWidth: 0,
           position: 'absolute',
-          height: 70,
+          height: tabBarHeight,
         },
       }}
       initialRouteName="Dashboard"

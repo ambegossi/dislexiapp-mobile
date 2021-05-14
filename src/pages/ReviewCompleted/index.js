@@ -12,7 +12,7 @@ import { playAudio } from '../../utils/audio';
 import bgImg from '../../assets/images/bg.png';
 import check from '../../assets/animations/check.json';
 
-import { Container, Header } from './styles';
+import { Background, Header } from './styles';
 
 const ReviewCompleted = ({ route }) => {
   const { stimulusList, namingType } = route.params;
@@ -39,7 +39,7 @@ const ReviewCompleted = ({ route }) => {
         flex: 1,
       }}
     >
-      <Container source={bgImg}>
+      <Background source={bgImg}>
         <Header>
           <ProgressBar progress={5} width={170} total={5} />
         </Header>
@@ -52,7 +52,7 @@ const ReviewCompleted = ({ route }) => {
         />
 
         <Button onPress={handleNaming}>Continuar</Button>
-      </Container>
+      </Background>
     </ScrollView>
   );
 };

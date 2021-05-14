@@ -5,9 +5,13 @@ import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 import ButtonComponent from '../../components/Button';
 import Text from '../../components/Text';
 
-export const Container = styled.ImageBackground`
+export const Background = styled.ImageBackground`
   flex: 1;
-  padding: 0 30px;
+`;
+
+export const Container = styled.View`
+  flex: 1;
+  padding: 0 30px 70px 30px;
 
   align-items: center;
   justify-content: center;
@@ -18,8 +22,6 @@ export const Header = styled.View`
     ? getStatusBarHeight() + 40
     : getStatusBarHeight()}px;
   width: 100%;
-  position: absolute;
-  top: 0;
 
   flex-direction: row;
   justify-content: space-between;
@@ -28,13 +30,13 @@ export const Header = styled.View`
 
 export const Title = styled(Text)`
   color: #fff;
-  font-size: 20px;
+  font-size: 18px;
   margin-bottom: 5px;
 `;
 
 export const FontContainer = styled.View`
   width: 100%;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 
   flex-direction: row;
   align-items: center;
@@ -43,14 +45,14 @@ export const FontContainer = styled.View`
 
 export const FontExampleText = styled.Text`
   color: #fff;
-  font-size: 28px;
+  font-size: 24px;
   font-family: ${props => `${props.font}-Regular`};
   margin: 0 15px;
 `;
 
 export const SpeakingRateContainer = styled.View`
   width: 100%;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 
   flex-direction: row;
   align-items: center;
@@ -59,13 +61,13 @@ export const SpeakingRateContainer = styled.View`
 
 export const SpeakingRateText = styled(Text)`
   color: #fff;
-  font-size: 28px;
+  font-size: 24px;
   margin: 0 15px;
 `;
 
 export const ProfilePrivacyContainer = styled.View`
   width: 100%;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 
   align-items: center;
 `;
@@ -89,10 +91,9 @@ export const ProfilePrivacyButtonText = styled(Text)`
 `;
 
 export const DeleteAccountButton = styled(ButtonComponent)`
-  margin-top: 5px;
   background: #ca0000;
 `;
 
 export const Button = styled(ButtonComponent)`
-  margin-top: 15px;
+  margin-top: 10px;
 `;

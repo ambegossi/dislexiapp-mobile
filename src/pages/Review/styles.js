@@ -4,9 +4,9 @@ import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 
 import Text from '../../components/Text';
 
-export const Container = styled.ImageBackground`
+export const Background = styled.ImageBackground`
   flex: 1;
-  padding: 0 30px 120px 30px;
+  padding: 0 30px 75px 30px;
 
   justify-content: space-between;
   align-items: center;
@@ -16,7 +16,7 @@ export const Header = styled.View`
   padding: ${Platform.OS === 'ios'
       ? getStatusBarHeight() + 40
       : getStatusBarHeight()}px
-    0 30px 0;
+    0 5px 0;
   width: 100%;
 
   align-items: center;
@@ -40,8 +40,8 @@ export const ResultIcon = styled.View`
 `;
 
 export const StimulusImage = styled.Image`
-  height: 160px;
-  width: 160px;
+  height: 140px;
+  width: 140px;
 `;
 
 export const WordContainer = styled.View`
@@ -51,8 +51,8 @@ export const WordContainer = styled.View`
   border-color: #fff;
   border-style: solid;
   border-width: 1px;
-  margin-top: 20px;
-  margin-bottom: 30px;
+  margin-top: 15px;
+  margin-bottom: 20px;
 
   justify-content: center;
   align-items: center;

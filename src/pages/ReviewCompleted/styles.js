@@ -2,9 +2,9 @@ import styled from 'styled-components/native';
 import { Platform } from 'react-native';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 
-export const Container = styled.ImageBackground`
+export const Background = styled.ImageBackground`
   flex: 1;
-  padding: 0 30px 90px 30px;
+  padding: 0 30px 70px 30px;
 
   justify-content: center;
   align-items: center;

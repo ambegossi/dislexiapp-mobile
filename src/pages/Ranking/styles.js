@@ -4,9 +4,9 @@ import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 
 import Text from '../../components/Text';
 
-export const Container = styled.ImageBackground`
+export const Background = styled.ImageBackground`
   flex: 1;
-  padding: 0 30px 90px 30px;
+  padding: 0 30px 70px 30px;
 
   justify-content: center;
   align-items: center;
@@ -67,7 +67,7 @@ export const FirstUserName = styled(Text)`
 `;
 
 export const RankingList = styled.FlatList`
-  margin-top: 130px;
+  margin-top: 70px;
   width: 100%;
 `;
 

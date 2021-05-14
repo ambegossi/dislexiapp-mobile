@@ -1,12 +1,7 @@
 import React, { useRef, useState } from 'react';
-import {
-  KeyboardAvoidingView,
-  ScrollView,
-  Platform,
-  TouchableOpacity,
-  Alert,
-} from 'react-native';
+import { TouchableOpacity, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { useNavigation } from '@react-navigation/native';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -26,6 +21,7 @@ import bgImg from '../../assets/images/bg.png';
 import avatarDefaultImg from '../../assets/images/avatarDefault.png';
 
 import {
+  Background,
   Container,
   Header,
   AvatarWrapper,
@@ -102,24 +98,15 @@ const Profile = () => {
   const handleSignOut = async () => {
     setSignOutLoading(true);
 
-    await removeSettings();
-
     await signOut();
+
+    await removeSettings();
   };
 
   return (
-    <KeyboardAvoidingView
-      style={{ flex: 1 }}
-      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-      enabled
-    >
-      <ScrollView
-        keyboardShouldPersistTaps="handled"
-        contentContainerStyle={{
-          flex: 1,
-        }}
-      >
-        <Container source={bgImg}>
+    <Background source={bgImg}>
+      <KeyboardAwareScrollView>
+        <Container>
           <Header>
             <TouchableOpacity onPress={() => navigation.goBack()}>
               <Icon name="arrow-left-circle" size={32} color="#fff" />
@@ -197,8 +184,8 @@ const Profile = () => {
             Salvar
           </Button>
         </Container>
-      </ScrollView>
-    </KeyboardAvoidingView>
+      </KeyboardAwareScrollView>
+    </Background>
   );
 };
 

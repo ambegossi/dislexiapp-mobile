@@ -4,9 +4,13 @@ import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 
 import ButtonComponent from '../../../components/Button';
 
-export const Container = styled.ImageBackground`
+export const Background = styled.ImageBackground`
   flex: 1;
-  padding: 0 30px 90px 30px;
+`;
+
+export const Container = styled.View`
+  flex: 1;
+  padding: 0 30px 70px 30px;
 
   justify-content: center;
   align-items: center;

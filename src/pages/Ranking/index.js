@@ -21,7 +21,7 @@ import trophyImg from '../../assets/images/trophy.png';
 import shieldImg from '../../assets/images/shield.png';
 
 import {
-  Container,
+  Background,
   Header,
   FirstUserContainer,
   FirstUserAvatarContainer,
@@ -76,7 +76,7 @@ const Ranking = () => {
   );
 
   return (
-    <Container source={bgImg}>
+    <Background source={bgImg}>
       <Header>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Icon name="arrow-left-circle" size={32} color="#fff" />
@@ -149,7 +149,7 @@ const Ranking = () => {
           />
         </>
       )}
-    </Container>
+    </Background>
   );
 };
 
