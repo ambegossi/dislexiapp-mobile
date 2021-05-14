@@ -8,6 +8,7 @@ import TextToSpeechButton from '../../components/TextToSpeechButton';
 import api from '../../services/api';
 import { speech } from '../../utils/voice';
 import { useSettings } from '../../hooks/settings';
+import { useAuth } from '../../hooks/auth';
 
 import bgImg from '../../assets/images/bg.png';
 import orangeAstronautImg from '../../assets/images/orangeAstronaut.png';
@@ -31,7 +32,8 @@ import {
 const Settings = () => {
   const navigation = useNavigation();
 
-  const { settings, updateSettings } = useSettings();
+  const { settings, updateSettings, removeSettings } = useSettings();
+  const { signOut } = useAuth();
 
   const fonts = ['Nunito', 'Roboto', 'Ubuntu'];
   const [currentFontIndex, setCurrentFontIndex] = useState(0);
@@ -76,19 +78,21 @@ const Settings = () => {
       await updateSettings(data);
 
       const successMessage = 'Configurações atualizadas com sucesso!';
+
       await speech(successMessage, data.speaking_rate);
+
       Alert.alert(successMessage);
     } catch (err) {
       const errorMessage =
         err.response?.data?.message ||
         'Ocorreu um erro ao salvar as configurações, tente novamente.';
+
       await speech(errorMessage, settings.speaking_rate);
+
       Alert.alert('Ops...', errorMessage);
     }
     setSubmitLoading(false);
   };
-
-  const handleDeleteAccount = async () => {};
 
   const handleNextFont = () => {
     setCurrentFontIndex(currentFontIndex + 1);
@@ -106,6 +110,25 @@ const Settings = () => {
     setCurrentSpeakingRateIndex(currentSpeakingRateIndex - 1);
   };
 
+  const handleDeleteAccount = async () => {
+    setDeleteAccountLoading(true);
+    try {
+      await api.delete('/users');
+
+      await signOut();
+
+      await removeSettings();
+    } catch (err) {
+      const errorMessage =
+        err.response?.data?.message ||
+        'Ocorreu um erro ao excluir sua conta, tente novamente.';
+
+      await speech(errorMessage, settings.speaking_rate);
+
+      Alert.alert('Ops...', errorMessage);
+    }
+  };
+
   return (
     <ScrollView
       keyboardShouldPersistTaps="handled"
@@ -120,7 +143,7 @@ const Settings = () => {
             <Icon name="arrow-left-circle" size={32} color="#fff" />
           </TouchableOpacity>
 
-          <TextToSpeechButton text="Configs" />
+          <TextToSpeechButton text="Nesta tela você pode escolher a fonte dos textos do aplicativo, a velocidade das instruções por áudio, como essa, e escolher a privacidade do seu perfil. Se você escolher um perfil privado, você não irá aparecer no ranking." />
         </Header>
 
         <Title fontWeight="bold">Fonte</Title>
