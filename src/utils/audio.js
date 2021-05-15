@@ -6,12 +6,12 @@ export const playAudio = (audioPath, isMainBundle) => {
     isMainBundle ? Sound.MAIN_BUNDLE : '',
     error => {
       if (error) {
-        return null;
+        return;
       }
 
-      sound.play();
-
-      return null;
+      sound.play(() => {
+        sound.release();
+      });
     },
   );
 };
