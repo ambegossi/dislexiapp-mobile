@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { ScrollView, TouchableOpacity, Alert } from 'react-native';
+import {
+  ScrollView,
+  TouchableOpacity,
+  Alert,
+  Platform,
+  PermissionsAndroid,
+} from 'react-native';
 import LottieView from 'lottie-react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import { useNavigation } from '@react-navigation/native';
@@ -28,18 +34,48 @@ const NamingInstructions = ({ route }) => {
 
   const [loading, setLoading] = useState(false);
 
+  const checkRecordAudioPermission = async () => {
+    try {
+      const recordAudioPermission = await PermissionsAndroid.check(
+        PermissionsAndroid.PERMISSIONS.RECORD_AUDIO,
+      );
+
+      return recordAudioPermission;
+    } catch (err) {
+      return false;
+    }
+  };
+
   const handleStart = async () => {
     setLoading(true);
     try {
       const { data } = await api.get(`/stimulus/${user.profile_id}`, {
-        params: { number: 2 },
+        params: { number: 5 },
       });
 
-      navigation.navigate('Naming', {
-        stimulusList: data,
-        namingType,
-        step: 1,
-      });
+      if (Platform.OS === 'android') {
+        const audioRecordingAllowed = await checkRecordAudioPermission();
+
+        if (!audioRecordingAllowed) {
+          navigation.navigate('RecordAudioPermission', {
+            stimulusList: data,
+            namingType,
+            step: 1,
+          });
+        } else {
+          navigation.navigate('Naming', {
+            stimulusList: data,
+            namingType,
+            step: 1,
+          });
+        }
+      } else {
+        navigation.navigate('Naming', {
+          stimulusList: data,
+          namingType,
+          step: 1,
+        });
+      }
     } catch (err) {
       const errorMessage =
         err.response?.data?.message ||

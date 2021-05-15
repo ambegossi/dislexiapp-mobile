@@ -78,7 +78,7 @@ const Review = ({ route }) => {
     >
       <Background source={bgImg}>
         <Header>
-          <ProgressBar progress={progress} width={170} total={2} />
+          <ProgressBar progress={progress} width={170} total={5} />
         </Header>
 
         <Wrapper>

@@ -10,6 +10,7 @@ import NamingCompleted from '../pages/NamingCompleted';
 import Review from '../pages/Review';
 import ReviewCompleted from '../pages/ReviewCompleted';
 import NARCompleted from '../pages/NARCompleted';
+import RecordAudioPermission from '../pages/RecordAudioPermission';
 
 const Dashboard = createStackNavigator();
 
@@ -32,6 +33,10 @@ const DashboardRoutes = () => (
     <Dashboard.Screen name="Review" component={Review} />
     <Dashboard.Screen name="ReviewCompleted" component={ReviewCompleted} />
     <Dashboard.Screen name="NARCompleted" component={NARCompleted} />
+    <Dashboard.Screen
+      name="RecordAudioPermission"
+      component={RecordAudioPermission}
+    />
   </Dashboard.Navigator>
 );
 

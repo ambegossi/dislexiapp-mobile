@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {
-  ScrollView,
-  Platform,
-  PermissionsAndroid,
-  ActivityIndicator,
-  Alert,
-} from 'react-native';
+import { ScrollView, ActivityIndicator, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import { Recorder } from '@react-native-community/audio-toolkit';
 import { useNavigation } from '@react-navigation/native';
@@ -153,43 +147,14 @@ const Naming = ({ route }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const requestRecordAudioPermission = async () => {
-    try {
-      const granted = await PermissionsAndroid.request(
-        PermissionsAndroid.PERMISSIONS.RECORD_AUDIO,
-        {
-          title: 'Permissão de microfone',
-          message: 'O aplicativo necessita de acesso ao seu microfone.',
-          buttonNegative: 'Cancelar',
-          buttonPositive: 'OK',
-        },
-      );
-      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-        return true;
-      }
-      return false;
-    } catch (err) {
-      console.error(err);
-      return false;
-    }
-  };
-
   const startRecording = async () => {
-    let hasRecordAudioPermission = true;
+    setRecording(true);
 
-    if (Platform.OS === 'android') {
-      hasRecordAudioPermission = await requestRecordAudioPermission();
-    }
-
-    if (hasRecordAudioPermission) {
-      setRecording(true);
-
-      try {
-        await recorder.prepare();
-        await recorder.record();
-      } catch (err) {
-        console.error('error recording', err);
-      }
+    try {
+      await recorder.prepare();
+      await recorder.record();
+    } catch (err) {
+      console.error('error recording', err);
     }
   };
 
@@ -257,7 +222,7 @@ const Naming = ({ route }) => {
     >
       <Background source={bgImg}>
         <Header>
-          <ProgressBar progress={progress} width={170} total={2} />
+          <ProgressBar progress={progress} width={170} total={5} />
         </Header>
 
         <Wrapper>
