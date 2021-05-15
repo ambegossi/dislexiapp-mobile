@@ -65,12 +65,26 @@ const Naming = ({ route }) => {
     }
   };
 
+  const getScoreEarned = level => {
+    if (level < 10) {
+      return 10;
+    }
+
+    if (level < 30) {
+      return 5;
+    }
+
+    return 3;
+  };
+
   const handleUpdateProfile = async () => {
     setUpdateProfileLoading(true);
     try {
       const { score, level } = user.profile;
 
-      const newScore = score + 5;
+      const scoreEarned = getScoreEarned(level);
+
+      const newScore = score + scoreEarned;
 
       const data = {
         score: newScore,
