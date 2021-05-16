@@ -12,6 +12,7 @@ import { useSettings } from '../../hooks/settings';
 import api from '../../services/api';
 import { playAudio } from '../../utils/audio';
 import { speech } from '../../utils/voice';
+import sleep from '../../utils/sleep';
 
 import bgImg from '../../assets/images/bg.png';
 import audioWave from '../../assets/icons/audioWave.png';
@@ -147,8 +148,6 @@ const Naming = ({ route }) => {
     }
 
     const newRecorder = new Recorder(filename, {
-      // bitrate: 256000,
-      // sampleRate: 16000,
       format: 'aac',
       quality: 'max',
     });
@@ -183,8 +182,6 @@ const Naming = ({ route }) => {
 
     formData.append('word', currentStimulus.word);
 
-    setRecognitionLoading(true);
-
     try {
       const { data } = await api.post('/stimulus/recognize', formData);
 
@@ -203,8 +200,12 @@ const Naming = ({ route }) => {
   };
 
   const stopRecording = async () => {
-    await recorder.stop();
     setRecording(false);
+    setRecognitionLoading(true);
+
+    await sleep(900);
+
+    await recorder.stop();
     // new Player('audio.aac').play();
     const audioPath = recorder.fsPath;
     await handleRecognizeAudio(audioPath);
