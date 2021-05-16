@@ -6,18 +6,20 @@ import Text from '../../components/Text';
 
 export const Background = styled.ImageBackground`
   flex: 1;
-  padding: 0 30px 75px 30px;
+  padding: 0 30px 0 30px;
 
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
 `;
 
 export const Header = styled.View`
   padding: ${Platform.OS === 'ios'
       ? getStatusBarHeight() + 40
       : getStatusBarHeight()}px
-    0 5px 0;
+    0 30px 0;
   width: 100%;
+  position: absolute;
+  top: 0;
 
   align-items: center;
 `;
@@ -29,9 +31,9 @@ export const Wrapper = styled.View`
 `;
 
 export const ResultIcon = styled.View`
-  width: 50px;
-  height: 50px;
-  border-radius: 25px;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
   background-color: ${props => (props.isCorrect ? '#04d361' : '#ca0000')};
 
   align-self: flex-start;
@@ -40,19 +42,19 @@ export const ResultIcon = styled.View`
 `;
 
 export const StimulusImage = styled.Image`
-  height: 140px;
-  width: 140px;
+  height: 120px;
+  width: 120px;
 `;
 
 export const WordContainer = styled.View`
   width: 100%;
-  height: 80px;
+  height: 65px;
   border-radius: 15px;
   border-color: #fff;
   border-style: solid;
   border-width: 1px;
   margin-top: 15px;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 
   justify-content: center;
   align-items: center;
@@ -60,7 +62,7 @@ export const WordContainer = styled.View`
 
 export const Word = styled(Text)`
   color: #fff;
-  font-size: 36px;
+  font-size: 30px;
   text-transform: capitalize;
 `;
 
@@ -69,6 +71,7 @@ export const SoundButton = styled.TouchableOpacity`
   height: 70px;
   border-radius: 35px;
   background: #fff;
+  margin-bottom: 25px;
 
   justify-content: center;
   align-items: center;

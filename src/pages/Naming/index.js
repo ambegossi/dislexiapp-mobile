@@ -5,7 +5,6 @@ import { Recorder } from '@react-native-community/audio-toolkit';
 import { useNavigation } from '@react-navigation/native';
 import PropTypes from 'prop-types';
 
-import Button from '../../components/Button';
 import ProgressBar from '../../components/ProgressBar';
 
 import { useAuth } from '../../hooks/auth';
@@ -28,6 +27,7 @@ import {
   AudioWaveContainer,
   AudioWaveImage,
   MicButton,
+  Button,
 } from './styles';
 
 const filename = 'audio.aac';

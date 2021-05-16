@@ -85,7 +85,7 @@ const Review = ({ route }) => {
           <ResultIcon isCorrect={currentResult.isCorrect}>
             <Icon
               name={currentResult.isCorrect ? 'check' : 'x'}
-              size={33}
+              size={28}
               color="#fff"
             />
           </ResultIcon>

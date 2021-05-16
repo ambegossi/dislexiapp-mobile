@@ -3,13 +3,14 @@ import { Platform } from 'react-native';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 
 import Text from '../../components/Text';
+import ButtonComponent from '../../components/Button';
 
 export const Background = styled.ImageBackground`
   flex: 1;
-  padding: 0 30px 80px 30px;
+  padding: 0 30px 0 30px;
 
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
 `;
 
 export const Header = styled.View`
@@ -18,6 +19,8 @@ export const Header = styled.View`
       : getStatusBarHeight()}px
     0 30px 0;
   width: 100%;
+  position: absolute;
+  top: 0;
 
   align-items: center;
 `;
@@ -40,14 +43,14 @@ export const ResultIcon = styled.View`
 `;
 
 export const Image = styled.Image`
-  height: 160px;
-  width: 160px;
+  height: 140px;
+  width: 140px;
   margin-bottom: 40px;
 `;
 
 export const WordContainer = styled.View`
   width: 100%;
-  height: 80px;
+  height: 75px;
   border-radius: 15px;
   border-color: #fff;
   border-style: solid;
@@ -61,7 +64,7 @@ export const WordContainer = styled.View`
 
 export const Word = styled(Text)`
   color: #fff;
-  font-size: 36px;
+  font-size: 32px;
   text-transform: capitalize;
 `;
 
@@ -88,4 +91,8 @@ export const MicButton = styled.TouchableOpacity`
 
   justify-content: center;
   align-items: center;
+`;
+
+export const Button = styled(ButtonComponent)`
+  margin-top: 50px;
 `;
