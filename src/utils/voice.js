@@ -26,4 +26,6 @@ export const speech = async (text, speakingRate = 1) => {
 
   await createFile(path, data.audioContent);
   playAudio(path, false);
+
+  await RNFS.unlink(path);
 };
