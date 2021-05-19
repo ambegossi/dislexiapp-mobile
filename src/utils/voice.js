@@ -1,6 +1,6 @@
 import RNFS from 'react-native-fs';
 
-import createFile from './createFile';
+import { createFile, deleteFile } from './file';
 import ttsApi from '../services/ttsApi';
 import { playAudio } from './audio';
 
@@ -25,7 +25,8 @@ export const speech = async (text, speakingRate = 1) => {
   const { data } = await ttsApi.post('', payload);
 
   await createFile(path, data.audioContent);
+
   playAudio(path, false);
 
-  await RNFS.unlink(path);
+  await deleteFile(path);
 };

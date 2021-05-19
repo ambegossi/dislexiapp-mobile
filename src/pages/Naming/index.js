@@ -13,6 +13,7 @@ import api from '../../services/api';
 import { playAudio } from '../../utils/audio';
 import { speech } from '../../utils/voice';
 import sleep from '../../utils/sleep';
+import { deleteFile } from '../../utils/file';
 
 import bgImg from '../../assets/images/bg.png';
 import audioWave from '../../assets/icons/audioWave.png';
@@ -195,6 +196,8 @@ const Naming = ({ route }) => {
     } catch (err) {
       console.error('error recognizing', err);
     }
+
+    await deleteFile(path);
 
     setRecognitionLoading(false);
   };

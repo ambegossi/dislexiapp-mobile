@@ -85,8 +85,8 @@ const Ranking = () => {
         <TextToSpeechButton
           text={
             users.length > 0
-              ? `Parabéns ${users[0].name}, você está em primeiro lugar.`
-              : ''
+              ? `${users[0].name} está em primeiro lugar.`
+              : 'Não foi possível mostrar o ranking.'
           }
         />
       </Header>
