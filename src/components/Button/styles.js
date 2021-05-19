@@ -15,7 +15,7 @@ export const Container = styled(RectButton)`
   align-items: center;
 
   ${props =>
-    props.loading &&
+    !props.enabled &&
     css`
       background: ${darken(0.1, '#be1fd3')};
     `}
