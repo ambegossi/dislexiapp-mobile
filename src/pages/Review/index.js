@@ -12,12 +12,14 @@ import { speech } from '../../utils/voice';
 import { useSettings } from '../../hooks/settings';
 
 import bgImg from '../../assets/images/bg.png';
+import astronautGreenFlag from '../../assets/images/astronautGreenFlag.png';
+import astronautRedFlag from '../../assets/images/astronautRedFlag.png';
 
 import {
   Background,
   Header,
   Wrapper,
-  ResultIcon,
+  ResultImage,
   StimulusImage,
   WordContainer,
   Word,
@@ -58,6 +60,8 @@ const Review = ({ route }) => {
     } else {
       playAudio('wrong.wav', true);
     }
+
+    handleSpeech();
   }, [currentResult]);
 
   const handleSpeech = async () => {
@@ -82,13 +86,11 @@ const Review = ({ route }) => {
         </Header>
 
         <Wrapper>
-          <ResultIcon isCorrect={currentResult.isCorrect}>
-            <Icon
-              name={currentResult.isCorrect ? 'check' : 'x'}
-              size={28}
-              color="#fff"
-            />
-          </ResultIcon>
+          <ResultImage
+            source={
+              currentResult.isCorrect ? astronautGreenFlag : astronautRedFlag
+            }
+          />
 
           <StimulusImage
             source={{

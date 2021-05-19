@@ -31,15 +31,8 @@ export const Wrapper = styled.View`
   width: 100%;
 `;
 
-export const ResultIcon = styled.View`
-  width: 50px;
-  height: 50px;
-  border-radius: 25px;
-  background-color: ${props => (props.isCorrect ? '#04d361' : '#ca0000')};
-
+export const ResultImage = styled.Image`
   align-self: flex-start;
-  justify-content: center;
-  align-items: center;
 `;
 
 export const Image = styled.Image`
@@ -55,7 +48,7 @@ export const WordContainer = styled.View`
   border-color: #fff;
   border-style: solid;
   border-width: 1px;
-  margin-top: 20px;
+  margin-top: 30px;
   margin-bottom: 40px;
 
   justify-content: center;
@@ -73,7 +66,7 @@ export const AudioWaveContainer = styled.View`
   height: 25px;
   background: #fff;
   border-radius: 15px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 
   justify-content: center;
   align-items: center;
@@ -81,6 +74,25 @@ export const AudioWaveContainer = styled.View`
 
 export const AudioWaveImage = styled.Image`
   width: 24px;
+`;
+
+export const MicButtonContainer = styled.View``;
+
+export const RefreshIcon = styled.View`
+  width: 23px;
+  height: 23px;
+  border-radius: 11.5px;
+  background-color: #fff;
+  border-color: #be1fd3;
+  border-style: solid;
+  border-width: 1px;
+  position: absolute;
+  left: 50px;
+  bottom: 55px;
+  z-index: 10;
+
+  justify-content: center;
+  align-items: center;
 `;
 
 export const MicButton = styled.TouchableOpacity`
@@ -94,5 +106,5 @@ export const MicButton = styled.TouchableOpacity`
 `;
 
 export const Button = styled(ButtonComponent)`
-  margin-top: 50px;
+  margin-top: 35px;
 `;

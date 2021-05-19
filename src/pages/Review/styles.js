@@ -30,15 +30,8 @@ export const Wrapper = styled.View`
   width: 100%;
 `;
 
-export const ResultIcon = styled.View`
-  width: 40px;
-  height: 40px;
-  border-radius: 20px;
-  background-color: ${props => (props.isCorrect ? '#04d361' : '#ca0000')};
-
+export const ResultImage = styled.Image`
   align-self: flex-start;
-  justify-content: center;
-  align-items: center;
 `;
 
 export const StimulusImage = styled.Image`

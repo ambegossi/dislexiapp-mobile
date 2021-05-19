@@ -17,17 +17,21 @@ import { deleteFile } from '../../utils/file';
 
 import bgImg from '../../assets/images/bg.png';
 import audioWave from '../../assets/icons/audioWave.png';
+import astronautGreenFlag from '../../assets/images/astronautGreenFlag.png';
+import astronautRedFlag from '../../assets/images/astronautRedFlag.png';
 
 import {
   Background,
   Header,
   Wrapper,
-  ResultIcon,
+  ResultImage,
   Image,
   WordContainer,
   Word,
   AudioWaveContainer,
   AudioWaveImage,
+  MicButtonContainer,
+  RefreshIcon,
   MicButton,
   Button,
 } from './styles';
@@ -121,25 +125,19 @@ const Naming = ({ route }) => {
       addNewResult(result);
     }
 
-    if (
-      step === 1 ||
-      (!!results[currentStimulusListIndex] &&
-        results[currentStimulusListIndex].isCorrect)
-    ) {
-      if (currentStimulusListIndex < stimulusList.length - 1) {
-        setCurrentStimulus(stimulusList[currentStimulusListIndex + 1]);
-        setCurrentStimulusListIndex(currentStimulusListIndex + 1);
+    if (currentStimulusListIndex < stimulusList.length - 1) {
+      setCurrentStimulus(stimulusList[currentStimulusListIndex + 1]);
+      setCurrentStimulusListIndex(currentStimulusListIndex + 1);
 
-        setProgress(progress + 1);
-      } else if (step === 1) {
-        navigation.navigate('NamingCompleted', {
-          stimulusList,
-          namingType,
-          results,
-        });
-      } else {
-        await handleUpdateProfile();
-      }
+      setProgress(progress + 1);
+    } else if (step === 1) {
+      navigation.navigate('NamingCompleted', {
+        stimulusList,
+        namingType,
+        results,
+      });
+    } else {
+      await handleUpdateProfile();
     }
   };
 
@@ -245,15 +243,13 @@ const Naming = ({ route }) => {
 
         <Wrapper>
           {step === 2 && !!results[currentStimulusListIndex] && (
-            <ResultIcon isCorrect={results[currentStimulusListIndex].isCorrect}>
-              <Icon
-                name={
-                  results[currentStimulusListIndex].isCorrect ? 'check' : 'x'
-                }
-                size={33}
-                color="#fff"
-              />
-            </ResultIcon>
+            <ResultImage
+              source={
+                results[currentStimulusListIndex].isCorrect
+                  ? astronautGreenFlag
+                  : astronautRedFlag
+              }
+            />
           )}
           {namingType === 'words' ? (
             <WordContainer>
@@ -277,9 +273,18 @@ const Naming = ({ route }) => {
           {recognitionLoading ? (
             <ActivityIndicator color="#fff" size="large" />
           ) : (
-            <MicButton onPressIn={startRecording} onPressOut={stopRecording}>
-              <Icon name="mic" size={35} color={getMicIconColor()} />
-            </MicButton>
+            <MicButtonContainer>
+              {step === 2 &&
+                results[currentStimulusListIndex] &&
+                !results[currentStimulusListIndex].isCorrect && (
+                  <RefreshIcon>
+                    <Icon name="refresh-ccw" size={14} color="#131315" />
+                  </RefreshIcon>
+                )}
+              <MicButton onPressIn={startRecording} onPressOut={stopRecording}>
+                <Icon name="mic" size={35} color={getMicIconColor()} />
+              </MicButton>
+            </MicButtonContainer>
           )}
         </Wrapper>
 
@@ -287,6 +292,12 @@ const Naming = ({ route }) => {
           icon={<Icon name="chevron-right" size={24} color="#fff" />}
           loading={updateProfileLoading}
           onPress={handleNext}
+          enabled={
+            (step === 2 &&
+              !!results[currentStimulusListIndex] &&
+              results[currentStimulusListIndex].isCorrect) ||
+            step === 1
+          }
         >
           Avançar
         </Button>
