@@ -7,6 +7,8 @@ import { useSettings } from '../../hooks/settings';
 
 import { speech } from '../../utils/voice';
 
+import { HelpIcon } from './styles';
+
 const TextToSpeechButton = ({ text }) => {
   const { settings } = useSettings();
 
@@ -31,6 +33,9 @@ const TextToSpeechButton = ({ text }) => {
   ) : (
     <TouchableOpacity onPress={handleSpeech}>
       <Icon name="volume-2" size={28} color="#fff" />
+      <HelpIcon>
+        <Icon name="help-circle" size={13} color="#fff" />
+      </HelpIcon>
     </TouchableOpacity>
   );
 };
