@@ -7,6 +7,7 @@ import {
   PermissionsAndroid,
 } from 'react-native';
 import LottieView from 'lottie-react-native';
+import Sound from 'react-native-sound';
 import Icon from 'react-native-vector-icons/Feather';
 import { useNavigation } from '@react-navigation/native';
 import PropTypes from 'prop-types';
@@ -19,7 +20,6 @@ import moonRun from '../../assets/animations/moonRun.json';
 import { useAuth } from '../../hooks/auth';
 import { useSettings } from '../../hooks/settings';
 import api from '../../services/api';
-import { playAudio } from '../../utils/audio';
 import { speech } from '../../utils/voice';
 
 import { Background, Header, Text } from './styles';
@@ -33,6 +33,7 @@ const NamingInstructions = ({ route }) => {
   const { settings } = useSettings();
 
   const [loading, setLoading] = useState(false);
+  const [sound, setSound] = useState(false);
 
   const checkRecordAudioPermission = async () => {
     try {
@@ -46,7 +47,16 @@ const NamingInstructions = ({ route }) => {
     }
   };
 
+  const handleStopAudio = () => {
+    if (sound) {
+      sound.stop();
+      sound.release();
+    }
+  };
+
   const handleStart = async () => {
+    handleStopAudio();
+
     setLoading(true);
     try {
       const { data } = await api.get(`/stimulus/${user.profile_id}`, {
@@ -99,13 +109,27 @@ const NamingInstructions = ({ route }) => {
       : 'Tente falar o que é cada figura que aparecer na tela, o mais rápido que conseguir!';
 
   useEffect(() => {
-    if (namingType === 'words') {
-      playAudio('nomeie_palavras.wav', true);
-    } else {
-      playAudio('nomeie_figuras.wav', true);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const soundObj = new Sound(
+      'nomeie_palavras.wav',
+      Sound.MAIN_BUNDLE,
+      error => {
+        if (error) {
+          return;
+        }
+
+        soundObj.play(() => {
+          soundObj.release();
+        });
+      },
+    );
+
+    setSound(soundObj);
   }, []);
+
+  const handleGoBack = () => {
+    handleStopAudio();
+    navigation.goBack();
+  };
 
   return (
     <ScrollView
@@ -117,7 +141,7 @@ const NamingInstructions = ({ route }) => {
     >
       <Background source={bgImg}>
         <Header>
-          <TouchableOpacity onPress={() => navigation.goBack()}>
+          <TouchableOpacity onPress={handleGoBack}>
             <Icon name="arrow-left-circle" size={32} color="#fff" />
           </TouchableOpacity>
 
