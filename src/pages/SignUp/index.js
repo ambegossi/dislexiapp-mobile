@@ -18,6 +18,7 @@ import TextToSpeechButton from '../../components/TextToSpeechButton';
 import logoImg from '../../assets/images/logo.png';
 import api from '../../services/api';
 import { speech } from '../../utils/voice';
+import { playAudio } from '../../utils/audio';
 
 import {
   Container,
@@ -60,9 +61,7 @@ const SignUp = () => {
     try {
       await api.post('/users', data);
 
-      await speech(
-        'Cadastro realizado com sucesso! Agora você já pode entrar.',
-      );
+      playAudio('successful_signup.wav', true);
 
       Alert.alert('Cadastro realizado com sucesso!', 'Você já pode entrar.');
 
