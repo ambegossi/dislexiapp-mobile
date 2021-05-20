@@ -13,12 +13,18 @@ import micImg from '../../assets/images/mic.png';
 import { Background, Text } from './styles';
 
 const RecordAudioPermission = ({ route }) => {
-  const { stimulusList, namingType, step } = route.params;
+  const {
+    stimulusList,
+    namingType,
+    step,
+    alreadyNamedWords,
+    alreadyNamedFigures,
+  } = route.params;
 
   const navigation = useNavigation();
 
   useEffect(() => {
-    playAudio('permitir_mic.wav', true);
+    playAudio('mic_permission.wav', true);
   }, []);
 
   const requestRecordAudioPermission = async () => {
@@ -33,11 +39,22 @@ const RecordAudioPermission = ({ route }) => {
         },
       );
       if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-        navigation.navigate('Naming', {
-          stimulusList,
-          namingType,
-          step,
-        });
+        if (
+          (namingType === 'words' && !alreadyNamedWords) ||
+          (namingType === 'figures' && !alreadyNamedFigures)
+        ) {
+          navigation.navigate('Instructions', {
+            stimulusList,
+            namingType,
+            step,
+          });
+        } else {
+          navigation.navigate('Naming', {
+            stimulusList,
+            namingType,
+            step,
+          });
+        }
       }
     } catch (err) {
       console.error(err);
@@ -77,6 +94,8 @@ RecordAudioPermission.propTypes = {
       ).isRequired,
       namingType: PropTypes.oneOf(['words', 'figures']).isRequired,
       step: PropTypes.number.isRequired,
+      alreadyNamedWords: PropTypes.bool.isRequired,
+      alreadyNamedFigures: PropTypes.bool.isRequired,
     }).isRequired,
   }).isRequired,
 };

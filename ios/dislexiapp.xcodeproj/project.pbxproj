@@ -28,14 +28,22 @@
 		C6AD6539B0F0446191AB739F /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 91F895D8EFBF43C583BC6780 /* Roboto-Regular.ttf */; };
 		D17D05917DC93EF75FF8F097 /* libPods-dislexiapp-dislexiappTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6C8B301AD55D99978A08068 /* libPods-dislexiapp-dislexiappTests.a */; };
 		D8D1D3AFBBC5EFC918F48AE6 /* libPods-dislexiapp-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EADEC2ACBF6D5E039A6C167 /* libPods-dislexiapp-tvOS.a */; };
+		E7284D5C2656AA6E002EDDB2 /* review_figures.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7284D552656AA6D002EDDB2 /* review_figures.wav */; };
+		E7284D5D2656AA6E002EDDB2 /* first_step_naming_words.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7284D562656AA6D002EDDB2 /* first_step_naming_words.wav */; };
+		E7284D5E2656AA6E002EDDB2 /* first_step_naming_figures.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7284D572656AA6E002EDDB2 /* first_step_naming_figures.wav */; };
+		E7284D5F2656AA6E002EDDB2 /* second_step_naming_figures.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7284D582656AA6E002EDDB2 /* second_step_naming_figures.wav */; };
+		E7284D602656AA6E002EDDB2 /* review_words.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7284D592656AA6E002EDDB2 /* review_words.wav */; };
+		E7284D612656AA6E002EDDB2 /* enjoy.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7284D5A2656AA6E002EDDB2 /* enjoy.wav */; };
+		E7284D622656AA6E002EDDB2 /* second_step_naming_words.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7284D5B2656AA6E002EDDB2 /* second_step_naming_words.wav */; };
+		E7284D642656B8B8002EDDB2 /* successful_signup.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7284D632656B8B8002EDDB2 /* successful_signup.wav */; };
 		E7378AE4262CD86100F97F35 /* correct.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7378ADE262CD86100F97F35 /* correct.wav */; };
 		E7378AE5262CD86100F97F35 /* success.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7378ADF262CD86100F97F35 /* success.wav */; };
 		E7378AE6262CD86100F97F35 /* completed.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7378AE0262CD86100F97F35 /* completed.wav */; };
 		E7378AE8262CD86100F97F35 /* wrong.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7378AE2262CD86100F97F35 /* wrong.wav */; };
 		E74E37FD263E122F00F56A68 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74E37FC263E122F00F56A68 /* File.swift */; };
 		E78B8D29265004DE00EBBBE0 /* permitir_mic.wav in Resources */ = {isa = PBXBuildFile; fileRef = E78B8D28265004DD00EBBBE0 /* permitir_mic.wav */; };
-		E7C8F8A12647120900CF95A2 /* nomeie_palavras.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7C8F89F2647120900CF95A2 /* nomeie_palavras.wav */; };
-		E7C8F8A22647120900CF95A2 /* nomeie_figuras.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7C8F8A02647120900CF95A2 /* nomeie_figuras.wav */; };
+		E7C8F8A12647120900CF95A2 /* naming_words.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7C8F89F2647120900CF95A2 /* naming_words.wav */; };
+		E7C8F8A22647120900CF95A2 /* naming_figures.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7C8F8A02647120900CF95A2 /* naming_figures.wav */; };
 		EDAF80D2FCBB45BEB36B5119 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4AA6CCA8252A4617B7988C4B /* Nunito-SemiBold.ttf */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +109,14 @@
 		DA0A515A193548EEBEFD4515 /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
 		DEC3B3CA752B3DEEBF70A590 /* Pods-dislexiapp-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dislexiapp-tvOS.release.xcconfig"; path = "Target Support Files/Pods-dislexiapp-tvOS/Pods-dislexiapp-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		E52B3FB68EAF451BA9AB1C44 /* Ubuntu-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-Bold.ttf"; path = "../assets/fonts/Ubuntu-Bold.ttf"; sourceTree = "<group>"; };
+		E7284D552656AA6D002EDDB2 /* review_figures.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = review_figures.wav; path = ../../../Downloads/tes/review_figures.wav; sourceTree = "<group>"; };
+		E7284D562656AA6D002EDDB2 /* first_step_naming_words.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = first_step_naming_words.wav; path = ../../../Downloads/tes/first_step_naming_words.wav; sourceTree = "<group>"; };
+		E7284D572656AA6E002EDDB2 /* first_step_naming_figures.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = first_step_naming_figures.wav; path = ../../../Downloads/tes/first_step_naming_figures.wav; sourceTree = "<group>"; };
+		E7284D582656AA6E002EDDB2 /* second_step_naming_figures.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = second_step_naming_figures.wav; path = ../../../Downloads/tes/second_step_naming_figures.wav; sourceTree = "<group>"; };
+		E7284D592656AA6E002EDDB2 /* review_words.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = review_words.wav; path = ../../../Downloads/tes/review_words.wav; sourceTree = "<group>"; };
+		E7284D5A2656AA6E002EDDB2 /* enjoy.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = enjoy.wav; path = ../../../Downloads/tes/enjoy.wav; sourceTree = "<group>"; };
+		E7284D5B2656AA6E002EDDB2 /* second_step_naming_words.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = second_step_naming_words.wav; path = ../../../Downloads/tes/second_step_naming_words.wav; sourceTree = "<group>"; };
+		E7284D632656B8B8002EDDB2 /* successful_signup.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = successful_signup.wav; path = ../../../Downloads/tes/successful_signup.wav; sourceTree = "<group>"; };
 		E7378ADE262CD86100F97F35 /* correct.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = correct.wav; path = ../android/app/src/main/res/raw/correct.wav; sourceTree = "<group>"; };
 		E7378ADF262CD86100F97F35 /* success.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = success.wav; path = ../android/app/src/main/res/raw/success.wav; sourceTree = "<group>"; };
 		E7378AE0262CD86100F97F35 /* completed.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = completed.wav; path = ../android/app/src/main/res/raw/completed.wav; sourceTree = "<group>"; };
@@ -108,8 +124,8 @@
 		E74E37FB263E122F00F56A68 /* dislexiapp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "dislexiapp-Bridging-Header.h"; sourceTree = "<group>"; };
 		E74E37FC263E122F00F56A68 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		E78B8D28265004DD00EBBBE0 /* permitir_mic.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = permitir_mic.wav; path = ../android/app/src/main/res/raw/permitir_mic.wav; sourceTree = "<group>"; };
-		E7C8F89F2647120900CF95A2 /* nomeie_palavras.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = nomeie_palavras.wav; path = ../../../Downloads/nomeie_palavras.wav; sourceTree = "<group>"; };
-		E7C8F8A02647120900CF95A2 /* nomeie_figuras.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = nomeie_figuras.wav; path = ../../../Downloads/nomeie_figuras.wav; sourceTree = "<group>"; };
+		E7C8F89F2647120900CF95A2 /* naming_words.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = naming_words.wav; path = ../../../Downloads/naming_words.wav; sourceTree = "<group>"; };
+		E7C8F8A02647120900CF95A2 /* naming_figures.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = naming_figures.wav; path = ../../../Downloads/naming_figures.wav; sourceTree = "<group>"; };
 		EB5503B921FB4F2EBE92C387 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-Regular.ttf"; path = "../assets/fonts/Nunito-Regular.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -246,8 +262,16 @@
 				E74E37FC263E122F00F56A68 /* File.swift */,
 				E7378AE0262CD86100F97F35 /* completed.wav */,
 				E7378ADE262CD86100F97F35 /* correct.wav */,
-				E7C8F8A02647120900CF95A2 /* nomeie_figuras.wav */,
-				E7C8F89F2647120900CF95A2 /* nomeie_palavras.wav */,
+				E7C8F8A02647120900CF95A2 /* naming_figures.wav */,
+				E7284D5A2656AA6E002EDDB2 /* enjoy.wav */,
+				E7284D572656AA6E002EDDB2 /* first_step_naming_figures.wav */,
+				E7284D632656B8B8002EDDB2 /* successful_signup.wav */,
+				E7284D562656AA6D002EDDB2 /* first_step_naming_words.wav */,
+				E7284D552656AA6D002EDDB2 /* review_figures.wav */,
+				E7284D592656AA6E002EDDB2 /* review_words.wav */,
+				E7284D582656AA6E002EDDB2 /* second_step_naming_figures.wav */,
+				E7284D5B2656AA6E002EDDB2 /* second_step_naming_words.wav */,
+				E7C8F89F2647120900CF95A2 /* naming_words.wav */,
 				E7378ADF262CD86100F97F35 /* success.wav */,
 				E7378AE2262CD86100F97F35 /* wrong.wav */,
 				13B07FAE1A68108700A75B9A /* dislexiapp */,
@@ -434,21 +458,29 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7284D5E2656AA6E002EDDB2 /* first_step_naming_figures.wav in Resources */,
+				E7284D602656AA6E002EDDB2 /* review_words.wav in Resources */,
+				E7284D612656AA6E002EDDB2 /* enjoy.wav in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				E7284D622656AA6E002EDDB2 /* second_step_naming_words.wav in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				04B93647F91E4948B75C4447 /* Nunito-Bold.ttf in Resources */,
-				E7C8F8A22647120900CF95A2 /* nomeie_figuras.wav in Resources */,
+				E7C8F8A22647120900CF95A2 /* naming_figures.wav in Resources */,
+				E7284D5C2656AA6E002EDDB2 /* review_figures.wav in Resources */,
+				E7284D5D2656AA6E002EDDB2 /* first_step_naming_words.wav in Resources */,
 				E7378AE5262CD86100F97F35 /* success.wav in Resources */,
 				288CF51217084748BF21ACF6 /* Nunito-Regular.ttf in Resources */,
 				E7378AE8262CD86100F97F35 /* wrong.wav in Resources */,
 				EDAF80D2FCBB45BEB36B5119 /* Nunito-SemiBold.ttf in Resources */,
-				E7C8F8A12647120900CF95A2 /* nomeie_palavras.wav in Resources */,
+				E7C8F8A12647120900CF95A2 /* naming_words.wav in Resources */,
 				E7378AE6262CD86100F97F35 /* completed.wav in Resources */,
 				E7378AE4262CD86100F97F35 /* correct.wav in Resources */,
+				E7284D642656B8B8002EDDB2 /* successful_signup.wav in Resources */,
 				164DE526B5744511A9017AE4 /* Roboto-Bold.ttf in Resources */,
 				02ED7D96EF774497B6027F4D /* Roboto-Medium.ttf in Resources */,
 				C6AD6539B0F0446191AB739F /* Roboto-Regular.ttf in Resources */,
 				E78B8D29265004DE00EBBBE0 /* permitir_mic.wav in Resources */,
+				E7284D5F2656AA6E002EDDB2 /* second_step_naming_figures.wav in Resources */,
 				940F87B2246B452DA9E3BED1 /* Ubuntu-Bold.ttf in Resources */,
 				AF5E2C81341744C9938E40F2 /* Ubuntu-Medium.ttf in Resources */,
 				81EB06EADAC04F0B919C0EC1 /* Ubuntu-Regular.ttf in Resources */,

@@ -56,7 +56,13 @@ const SignIn = () => {
       const user = await signIn({ name: data.name, password: data.password });
 
       if (user.settings) {
-        await updateSettings(user.settings);
+        const settings = {
+          ...user.settings,
+          alreadyNamedFigures: false,
+          alreadyNamedWords: false,
+        };
+
+        await updateSettings(settings);
       }
     } catch (err) {
       const errorMessage =

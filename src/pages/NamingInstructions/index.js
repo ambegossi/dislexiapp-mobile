@@ -54,6 +54,14 @@ const NamingInstructions = ({ route }) => {
     }
   };
 
+  const handleNavigateToInstructions = data => {
+    navigation.navigate('Instructions', {
+      stimulusList: data,
+      namingType,
+      step: 1,
+    });
+  };
+
   const handleStart = async () => {
     handleStopAudio();
 
@@ -71,7 +79,14 @@ const NamingInstructions = ({ route }) => {
             stimulusList: data,
             namingType,
             step: 1,
+            alreadyNamedWords: settings.alreadyNamedWords,
+            alreadyNamedFigures: settings.alreadyNamedFigures,
           });
+        } else if (
+          (namingType === 'words' && !settings.alreadyNamedWords) ||
+          (namingType === 'figures' && !settings.alreadyNamedFigures)
+        ) {
+          handleNavigateToInstructions(data);
         } else {
           navigation.navigate('Naming', {
             stimulusList: data,
@@ -79,6 +94,11 @@ const NamingInstructions = ({ route }) => {
             step: 1,
           });
         }
+      } else if (
+        (namingType === 'words' && !settings.alreadyNamedWords) ||
+        (namingType === 'figures' && !settings.alreadyNamedFigures)
+      ) {
+        handleNavigateToInstructions(data);
       } else {
         navigation.navigate('Naming', {
           stimulusList: data,
@@ -109,19 +129,18 @@ const NamingInstructions = ({ route }) => {
       : 'Tente falar o que é cada figura que aparecer na tela, o mais rápido que conseguir!';
 
   useEffect(() => {
-    const soundObj = new Sound(
-      'nomeie_palavras.wav',
-      Sound.MAIN_BUNDLE,
-      error => {
-        if (error) {
-          return;
-        }
+    const audio =
+      namingType === 'words' ? 'naming_words.wav' : 'naming_figures.wav';
 
-        soundObj.play(() => {
-          soundObj.release();
-        });
-      },
-    );
+    const soundObj = new Sound(audio, Sound.MAIN_BUNDLE, error => {
+      if (error) {
+        return;
+      }
+
+      soundObj.play(() => {
+        soundObj.release();
+      });
+    });
 
     setSound(soundObj);
   }, []);
