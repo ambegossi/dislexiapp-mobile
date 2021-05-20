@@ -56,9 +56,7 @@ const Dashboard = () => {
         contentContainerStyle={{ flex: 1, justifyContent: 'center' }}
       >
         <Header>
-          <TextToSpeechButton
-            text={`Bem-vindo ${user.name}! Toque no seu avatar para acessar seu perfil. Para iniciar a nomeação de palavras, toque no card rosa abaixo. Para iniciar a nomeação de figuras, toque no card verde.`}
-          />
+          <TextToSpeechButton text="Para iniciar a nomeação de palavras, toque no card rosa abaixo. Para iniciar a nomeação de figuras, toque no card verde." />
 
           <ProfileContainer>
             <UserName fontWeight="medium">
