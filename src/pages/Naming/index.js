@@ -72,7 +72,7 @@ const Naming = ({ route }) => {
   };
 
   const getScoreEarned = level => {
-    if (level < 10) {
+    if (level < 6) {
       return 10;
     }
 
