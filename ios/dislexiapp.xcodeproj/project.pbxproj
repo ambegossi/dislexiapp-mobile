@@ -41,7 +41,7 @@
 		E7378AE6262CD86100F97F35 /* completed.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7378AE0262CD86100F97F35 /* completed.wav */; };
 		E7378AE8262CD86100F97F35 /* wrong.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7378AE2262CD86100F97F35 /* wrong.wav */; };
 		E74E37FD263E122F00F56A68 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74E37FC263E122F00F56A68 /* File.swift */; };
-		E78B8D29265004DE00EBBBE0 /* permitir_mic.wav in Resources */ = {isa = PBXBuildFile; fileRef = E78B8D28265004DD00EBBBE0 /* permitir_mic.wav */; };
+		E78B8D29265004DE00EBBBE0 /* mic_permission.wav in Resources */ = {isa = PBXBuildFile; fileRef = E78B8D28265004DD00EBBBE0 /* mic_permission.wav */; };
 		E7C8F8A12647120900CF95A2 /* naming_words.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7C8F89F2647120900CF95A2 /* naming_words.wav */; };
 		E7C8F8A22647120900CF95A2 /* naming_figures.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7C8F8A02647120900CF95A2 /* naming_figures.wav */; };
 		EDAF80D2FCBB45BEB36B5119 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4AA6CCA8252A4617B7988C4B /* Nunito-SemiBold.ttf */; };
@@ -123,7 +123,7 @@
 		E7378AE2262CD86100F97F35 /* wrong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = wrong.wav; path = ../android/app/src/main/res/raw/wrong.wav; sourceTree = "<group>"; };
 		E74E37FB263E122F00F56A68 /* dislexiapp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "dislexiapp-Bridging-Header.h"; sourceTree = "<group>"; };
 		E74E37FC263E122F00F56A68 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
-		E78B8D28265004DD00EBBBE0 /* permitir_mic.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = permitir_mic.wav; path = ../android/app/src/main/res/raw/permitir_mic.wav; sourceTree = "<group>"; };
+		E78B8D28265004DD00EBBBE0 /* mic_permission.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = mic_permission.wav; path = ../android/app/src/main/res/raw/mic_permission.wav; sourceTree = "<group>"; };
 		E7C8F89F2647120900CF95A2 /* naming_words.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = naming_words.wav; path = ../../../Downloads/naming_words.wav; sourceTree = "<group>"; };
 		E7C8F8A02647120900CF95A2 /* naming_figures.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = naming_figures.wav; path = ../../../Downloads/naming_figures.wav; sourceTree = "<group>"; };
 		EB5503B921FB4F2EBE92C387 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-Regular.ttf"; path = "../assets/fonts/Nunito-Regular.ttf"; sourceTree = "<group>"; };
@@ -258,7 +258,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				E78B8D28265004DD00EBBBE0 /* permitir_mic.wav */,
+				E78B8D28265004DD00EBBBE0 /* mic_permission.wav */,
 				E74E37FC263E122F00F56A68 /* File.swift */,
 				E7378AE0262CD86100F97F35 /* completed.wav */,
 				E7378ADE262CD86100F97F35 /* correct.wav */,
@@ -479,7 +479,7 @@
 				164DE526B5744511A9017AE4 /* Roboto-Bold.ttf in Resources */,
 				02ED7D96EF774497B6027F4D /* Roboto-Medium.ttf in Resources */,
 				C6AD6539B0F0446191AB739F /* Roboto-Regular.ttf in Resources */,
-				E78B8D29265004DE00EBBBE0 /* permitir_mic.wav in Resources */,
+				E78B8D29265004DE00EBBBE0 /* mic_permission.wav in Resources */,
 				E7284D5F2656AA6E002EDDB2 /* second_step_naming_figures.wav in Resources */,
 				940F87B2246B452DA9E3BED1 /* Ubuntu-Bold.ttf in Resources */,
 				AF5E2C81341744C9938E40F2 /* Ubuntu-Medium.ttf in Resources */,
