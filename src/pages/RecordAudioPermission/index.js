@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 import { ScrollView, PermissionsAndroid, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import SoundPlayer from 'react-native-sound-player';
 import PropTypes from 'prop-types';
 
 import Button from '../../components/Button';
-
-import { playAudio } from '../../utils/audio';
 
 import bgImg from '../../assets/images/bg.png';
 import micImg from '../../assets/images/mic.png';
@@ -24,7 +23,7 @@ const RecordAudioPermission = ({ route }) => {
   const navigation = useNavigation();
 
   useEffect(() => {
-    playAudio('mic_permission.wav', true);
+    SoundPlayer.playSoundFile('mic_permission', 'wav');
   }, []);
 
   const requestRecordAudioPermission = async () => {
@@ -39,6 +38,8 @@ const RecordAudioPermission = ({ route }) => {
         },
       );
       if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        SoundPlayer.stop();
+
         if (
           (namingType === 'words' && !alreadyNamedWords) ||
           (namingType === 'figures' && !alreadyNamedFigures)

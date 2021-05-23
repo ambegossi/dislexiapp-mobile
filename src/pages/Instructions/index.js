@@ -6,12 +6,12 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import SoundPlayer from 'react-native-sound-player';
 import Icon from 'react-native-vector-icons/Feather';
 import { useNavigation } from '@react-navigation/native';
 import PropTypes from 'prop-types';
 
 import { useSettings } from '../../hooks/settings';
-import { playAudio } from '../../utils/audio';
 
 import firstStepNamingWordsGif from '../../assets/gifs/firstStepNamingWords.gif';
 import reviewWordsGif from '../../assets/gifs/reviewWords.gif';
@@ -48,26 +48,26 @@ const Instructions = ({ route }) => {
 
   useEffect(() => {
     if (currentPage === 0) {
-      playAudio(
+      SoundPlayer.playSoundFile(
         namingType === 'words'
-          ? 'first_step_naming_words.wav'
-          : 'first_step_naming_figures.wav',
-        true,
+          ? 'first_step_naming_words'
+          : 'first_step_naming_figures',
+        'wav',
       );
     } else if (currentPage === 1) {
-      playAudio(
-        namingType === 'words' ? 'review_words.wav' : 'review_figures.wav',
-        true,
+      SoundPlayer.playSoundFile(
+        namingType === 'words' ? 'review_words' : 'review_figures',
+        'wav',
       );
     } else if (currentPage === 2) {
-      playAudio(
+      SoundPlayer.playSoundFile(
         namingType === 'words'
-          ? 'second_step_naming_words.wav'
-          : 'second_step_naming_figures.wav',
-        true,
+          ? 'second_step_naming_words'
+          : 'second_step_naming_figures',
+        'wav',
       );
     } else if (currentPage === 3) {
-      playAudio('enjoy.wav', true);
+      SoundPlayer.playSoundFile('enjoy', 'wav');
     }
   }, [currentPage, namingType]);
 
@@ -117,6 +117,8 @@ const Instructions = ({ route }) => {
         alreadyNamedFigures: true,
       });
     }
+
+    SoundPlayer.stop();
 
     navigation.navigate('Naming', {
       stimulusList,

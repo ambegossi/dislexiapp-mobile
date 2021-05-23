@@ -7,7 +7,7 @@ import {
   PermissionsAndroid,
 } from 'react-native';
 import LottieView from 'lottie-react-native';
-import Sound from 'react-native-sound';
+import SoundPlayer from 'react-native-sound-player';
 import Icon from 'react-native-vector-icons/Feather';
 import { useNavigation } from '@react-navigation/native';
 import PropTypes from 'prop-types';
@@ -33,7 +33,6 @@ const NamingInstructions = ({ route }) => {
   const { settings } = useSettings();
 
   const [loading, setLoading] = useState(false);
-  const [sound, setSound] = useState(false);
 
   const checkRecordAudioPermission = async () => {
     try {
@@ -47,13 +46,6 @@ const NamingInstructions = ({ route }) => {
     }
   };
 
-  const handleStopAudio = () => {
-    if (sound) {
-      sound.stop();
-      sound.release();
-    }
-  };
-
   const handleNavigateToInstructions = data => {
     navigation.navigate('Instructions', {
       stimulusList: data,
@@ -63,7 +55,7 @@ const NamingInstructions = ({ route }) => {
   };
 
   const handleStart = async () => {
-    handleStopAudio();
+    SoundPlayer.stop();
 
     setLoading(true);
     try {
@@ -129,24 +121,15 @@ const NamingInstructions = ({ route }) => {
       : 'Tente falar o que é cada figura que aparecer na tela, o mais rápido que conseguir!';
 
   useEffect(() => {
-    const audio =
-      namingType === 'words' ? 'naming_words.wav' : 'naming_figures.wav';
+    const audio = namingType === 'words' ? 'naming_words' : 'naming_figures';
 
-    const soundObj = new Sound(audio, Sound.MAIN_BUNDLE, error => {
-      if (error) {
-        return;
-      }
+    SoundPlayer.playSoundFile(audio, 'wav');
 
-      soundObj.play(() => {
-        soundObj.release();
-      });
-    });
-
-    setSound(soundObj);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleGoBack = () => {
-    handleStopAudio();
+    SoundPlayer.stop();
     navigation.goBack();
   };
 

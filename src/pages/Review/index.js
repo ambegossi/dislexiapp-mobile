@@ -54,6 +54,14 @@ const Review = ({ route }) => {
     }
   };
 
+  const handleSpeech = async () => {
+    setSpeechLoading(true);
+
+    await speech(currentStimulus.word, settings.speaking_rate);
+
+    setSpeechLoading(false);
+  };
+
   useEffect(() => {
     if (currentResult.isCorrect) {
       playAudio('correct.wav', true);
@@ -62,15 +70,8 @@ const Review = ({ route }) => {
     }
 
     handleSpeech();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentResult]);
-
-  const handleSpeech = async () => {
-    setSpeechLoading(true);
-
-    await speech(currentStimulus.word, settings.speaking_rate);
-
-    setSpeechLoading(false);
-  };
 
   return (
     <ScrollView
