@@ -1,10 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import {
-  Alert,
-  ActivityIndicator,
-  TouchableOpacity,
-  Image,
-} from 'react-native';
+import { Alert, TouchableOpacity, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 
@@ -28,6 +23,7 @@ import {
   FirstUserNameContainer,
   UserAvatar,
   FirstUserName,
+  Loading,
   RankingList,
   RankingRowContainer,
   RankingUserPositionContainer,
@@ -91,7 +87,7 @@ const Ranking = () => {
         />
       </Header>
 
-      {!!loading && <ActivityIndicator color="#fff" size="large" />}
+      {!!loading && <Loading color="#fff" size="large" />}
       {!loading && users.length > 0 && (
         <>
           <RankingList

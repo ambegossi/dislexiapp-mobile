@@ -8,7 +8,6 @@ export const Background = styled.ImageBackground`
   flex: 1;
   padding: 0 30px 70px 30px;
 
-  justify-content: center;
   align-items: center;
 `;
 
@@ -18,8 +17,6 @@ export const Header = styled.View`
       : getStatusBarHeight()}px
     0 25px 0;
   width: 100%;
-  position: absolute;
-  top: 0;
 
   flex-direction: row;
   justify-content: space-between;
@@ -66,8 +63,11 @@ export const FirstUserName = styled(Text)`
   margin-right: 15px;
 `;
 
+export const Loading = styled.ActivityIndicator`
+  margin-top: 100px;
+`;
+
 export const RankingList = styled.FlatList`
-  margin-top: 70px;
   width: 100%;
 `;
 
